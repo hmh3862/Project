@@ -175,7 +175,7 @@ public class MemberServiceImpl implements MemberService {
 		String content = "반갑습니다. " + memberVO.getUsername() + "님!!!<br>"
                 + "회원 가입을 축하드립니다.<br> "
         		+ "회원 가입을 완료하려면 다음의 링크를 클릭해서 인증하시기 바랍니다.<br>"
-                + "<a href='http://localhost:8080/hotel/confirm?userid="+memberVO.getUserid()+"&col1="+memberVO.getCol1()+"'>인증</a><br>";
+                + "<a href='http://localhost:8080/confirm?userid="+memberVO.getUserid()+"&col1="+memberVO.getCol1()+"'>인증</a><br>";
 		
         MimeMessagePreparator preparator = getMessagePreparator(to, subject, content);
         try {
