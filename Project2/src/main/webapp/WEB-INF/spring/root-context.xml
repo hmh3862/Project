@@ -32,13 +32,13 @@
 		<property name="mapperLocations" value="classpath:/kr/green/hotel/dao/*.xml"/>
 	</bean>
 	
-	<!-- 다음을 추가하면 SqlSession세션을 만들 피요가 없고 DAOImpl도 만들 필요가 없다 -->
+	<!-- 다음을 추가하면 SqlSession세션을 만들 필요가 없고 DAOImpl도 만들 필요가 없다 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="kr.green.hotel.dao"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
-	
-	<!-- Security 권한 설정 -->
+    
+    <!-- Security 권한 설정 -->
 	<security:http auto-config="true" use-expressions="true">
         <security:intercept-url pattern="/" access="permitAll" />
         <security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
@@ -72,11 +72,10 @@
 			 	authorities-by-username-query="select username, role from member_role where username=?"
 			 	/>   	
     	</security:authentication-provider> 
-    </security:authentication-manager>	
+    </security:authentication-manager>
     
-    <!-- 로그인 성공시 처리할 객체 등록 
+    <!-- 로그인 성공시 처리할 객체 등록 -->
     <bean class="kr.green.hotel.service.CustomSuccessHandler" id="customSuccessHandler"></bean>
-    -->
     
     <!-- 시큐리트 암호화 객체 등록 -->
     <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="bCryptPasswordEncoder"/>
@@ -85,8 +84,8 @@
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com"></property>
 		<property name="port" value="587"></property>
-		<property name="username" value="hmh3862@naver.com"></property>
-		<property name="password" value="matt1357?"></property>
+		<property name="username" value="hmh94253862@gmail.com"></property>
+		<property name="password" value="matt080808?"></property>
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.starttls.enable">true</prop>
