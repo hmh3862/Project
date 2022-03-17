@@ -82,10 +82,10 @@
 	
 	<!-- 자바 메일 보내기 객체 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com"></property>
+		<property name="host" value="smtp.naver.com"></property>
 		<property name="port" value="587"></property>
-		<property name="username" value="hmh94253862@gmail.com"></property>
-		<property name="password" value="matt080808?"></property>
+		<property name="username" value="hmh3862@naver.com"></property>
+		<property name="password" value="matt1357?"></property>
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.starttls.enable">true</prop>

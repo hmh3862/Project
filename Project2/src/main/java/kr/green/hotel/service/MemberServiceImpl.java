@@ -192,7 +192,7 @@ public class MemberServiceImpl implements MemberService {
  
             public void prepare(MimeMessage mimeMessage) throws Exception {
             	MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-            	helper.setFrom("hmh94253862@gmail.com");
+            	helper.setFrom("hmh3862@naver.com");
             	helper.setTo(to);
             	helper.setSubject(subject);
             	helper.setText(content, true);
