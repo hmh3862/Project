@@ -39,20 +39,48 @@
 			<section class="box search">
 				<form method="post" action="#">
 					<input type="text" class="text" name="search" placeholder="어디로 떠나시나요?" />
+					<input type="text" class="text" name="search" placeholder="체크인" />
+					<input type="text" class="text" name="search" placeholder="체크아웃" />
+					<input type="text" class="text" name="search" placeholder="인원" />
+					<input type="text" class="text" name="search" placeholder="검색" />
 				</form>
+			<!-- 
 			<a href="checkIn">체크인</a>
 			<a href="checkOut">체크아웃</a>
 			<a href="member">인원</a>
 			<a href="search">검색</a>
+			 -->
 			</section>
 		</div>
 	</div>
 	
 	<!-- Sidebar -->
 	<div id="sidebar">
-		<!-- Logo -->
+		<!-- 세션의 회원정보 : ${mvo } -->
+		<h1 id="logo"><a>현재 사용자 : ${user }</a></h1>
+		<!-- Logo 
 		<h1 id="logo"><a href="${pageContext.request.contextPath }/login">로그인</a></h1>
 		<h1 id="logo"><a href="insertForm">회원가입</a></h1>
+		-->
+		
+		<!-- POST로 로그아웃 -->
+		<br />
+		<c:if test='${pageContext.request.userPrincipal.name !=null }'>
+			<c:url value="/logout" var="logoutURL"/>
+			<form action="${logoutURL }" method="post" id="logoutForm">
+				<%-- 시큐리티에 있는 로그아웃을 사용하려면 토큰값도 넘겨줘야 한다. --%>
+				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+				<input type="submit" value="로그아웃">
+			</form>
+			<a href="updatePasswordForm">비밀 번호 변경</a>
+			<a href="updateForm">회원 정보 수정</a>
+			<a href="deleteForm">회원 탈퇴</a>
+		</c:if>
+		<c:if test='${user== "anonymousUser" }'>
+			[<a href="insertForm">회원가입</a>]
+			&nbsp;&nbsp;&nbsp;
+			[<a href="${pageContext.request.contextPath }/login">로그인</a>]
+		</c:if>
 		
 		<!-- Nav -->
 		<nav id="nav">
@@ -67,30 +95,13 @@
 			</ul>
 		</nav>
 		
-		<!-- Scripts -->
+		<!-- Scripts 
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		-->
 	</div>
-		
-
-	<!-- POST로 로그아웃 -->
-	<c:if test='${pageContext.request.userPrincipal.name !=null }'>
-		<c:url value="/logout" var="logoutURL"/>
-		<form action="${logoutURL }" method="post" id="logoutForm">
-			<%-- 시큐리티에 있는 로그아웃을 사용하려면 토큰값도 넘겨줘야 한다. --%>
-			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-			<input type="submit" value="로그아웃">
-		</form>
-		<a href="updatePasswordForm">비밀 번호 변경</a>
-		<a href="updateForm">회원 정보 수정</a>
-		<a href="deleteForm">회원 탈퇴</a>
-	</c:if>
-	<c:if test='${user== "anonymousUser" }'>
-		<a href="insertForm">회원가입하기</a>
-		<a href="${pageContext.request.contextPath }/login">로그인</a>
-	</c:if>
 </body>
 </html>
