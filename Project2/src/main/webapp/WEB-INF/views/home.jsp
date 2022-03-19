@@ -23,16 +23,9 @@
 		<div class="inner">
 			<article class="box post post-excerpt">
 				<header>
-					<!--
-						Note: Titles and subtitles will wrap automatically when necessary, so don't worry
-						if they get too long. You can also remove the <p> entirely if you don't
-						need a subtitle.
-					-->
 					<h2><a href="#">Welcome to Healing Stay</a></h2>
 					 <p>경기도 호텔 검색 및 예약 가능</p>
 				</header>
-				<div class="info">
-				</div>
 			</article>
 			
 			<!-- Search -->

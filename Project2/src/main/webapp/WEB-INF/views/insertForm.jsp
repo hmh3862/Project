@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<c:set var="contextPath" value="${pageContext.request.contextPath}"/> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -177,6 +178,7 @@ function formCheck(){
 				<label class="col-sm-2 col-form-label">성별</label>
 				<div class="col-sm-2">
 			  	  <label for="gender1" class="col-sm-2 col-form-label">남자</label>
+			  	  <!-- &nbsp;&nbsp;&nbsp; -->
 				  <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" checked>
 				</div>
 				<div class="col-sm-2">
