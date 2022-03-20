@@ -143,8 +143,6 @@ public class FileBoardServiceImple implements FileBoardService {
 					}
 				}
 			}
-
 		}
-		
 	}
 }

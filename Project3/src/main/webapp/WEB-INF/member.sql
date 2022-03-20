@@ -21,7 +21,9 @@ create table member(
 ); 
 
 -- 여기에서 관리자 아이디를 몇개 만들어 놓아야 한다.
--- INSERT INTO MEMBER VALUES (member_idx_seq.nextval,'admin', '123456')
+-- INSERT INTO MEMBER VALUES (member_idx_seq.nextval,'admin', '123456');
+INSERT INTO MEMBER VALUES (member_idx_seq.nextval,'admin','123456','admin','admin','hmh94253862@gmail.com',
+						  'M','010-1111-2222','11111','분당로','101','1',sysdate,sysdate,'123456','','');
 
 
 SELECT * FROM MEMBER;

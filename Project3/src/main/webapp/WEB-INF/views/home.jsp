@@ -87,7 +87,7 @@
 				<li class="current"><a href="#">Latest Post</a></li>
 				 -->
 				<li><a href="notice">공지사항</a></li>
-				<li><a href="board">후기게시판</a></li>
+				<li><a href="board/list">후기게시판</a></li>
 				<li><a href="freeBoard">자유게시판</a></li>
 				<li><a href="QnA">Q&A</a></li>
 			</ul>
