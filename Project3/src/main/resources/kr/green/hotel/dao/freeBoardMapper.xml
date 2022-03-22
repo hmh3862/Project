@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.hotel.dao.FreeBoardDAO">
+ 	<!-- id: 메서드명 , parameterType : 인수, resultType : 리턴값 -->
+ 	<!-- 1. 개수얻기 -->
+ 	<select id="selectCount" resultType="int">
+ 		select count(*) from freeBoard 	
+ 	</select>
+ 	<!-- 2. 1개 얻기 -->
+ 	<select id="selectByIdx" parameterType="int" resultType="freeBoardVO">
+ 		select * from freeBoard where idx=#{idx }
+ 	</select>
+ 	<!-- 3. 1페이지 얻기 -->
+ 	<select id="selectList" parameterType="hashmap" resultType="freeBoardVO">
+ 		select 
+ 			*
+ 		from
+	 		(select 
+	 			rownum rnum, R.*
+	 		from
+	 			(select * from freeBoard order by idx desc) R
+	 		where
+	 			<![CDATA[
+	 				rownum <= #{endNo}
+	 			]]>
+			) Q
+		where
+ 			<![CDATA[
+ 			rnum >= #{startNo}
+ 			]]>
+ 	</select>
+ 	
+ 	<!-- 4. 저장하기 -->
+ 	<insert id="insert" parameterType="freeBoardVO">
+ 		insert into	freeBoard 
+ 			(idx, name, password, subject, content, regDate, ip) 
+ 		values 
+ 			(freeBoard_idx_seq.nextval, #{name}, #{password}, #{subject}, #{content}, SYSDATE, #{ip})
+ 	</insert>
+ 	<!-- 5. 수정하기 -->
+ 	<update id="update" parameterType="freeBoardVO">
+ 		update 
+ 			freeBoard 
+ 		set
+ 			subject=#{subject}, content=#{content}, regdate=SYSDATE, ip=#{ip}
+ 		where
+ 			idx = #{idx}
+ 	</update>
+ 	
+ 	<!-- 6. 삭제하기 -->
+ 	<delete id="delete" parameterType="int">
+ 		delete from freeBoard where idx = #{idx }
+ 	</delete>
+ 	
+ 	<!-- 7. 현재 저장한 idx값 알아내기 -->
+ 	<select id="selectSeq" resultType="int">
+ 		select max(idx) from freeBoard
+ 	</select>
+  	
+</mapper>
