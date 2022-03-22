@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유 게시판</title>
+<title>공지사항</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://kit.fontawesome.com/5835e4ac0d.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
 <body>
 	<table id="content">
 		<tr>
-			<td colspan="5" class="title">자유 게시판</td>
+			<td colspan="5" class="title">공지사항</td>
 		</tr>
 		<tr>
 			<td colspan="5" class="info">
@@ -111,7 +111,7 @@
 		<tr>
 			<td class="info" colspan="5">
 				<button type="button" class="btn btn-outline-success btn-sm" 
-			        onclick='SendPost("${pageContext.request.contextPath }/board/insertFormFree",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
+			        onclick='SendPost("${pageContext.request.contextPath }/board/insertFormNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
 			</td>
 		</tr>
 	</table>	
