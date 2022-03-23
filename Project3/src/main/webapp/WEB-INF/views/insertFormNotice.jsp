@@ -117,7 +117,7 @@
 		return true;
 	}
 	function goList(){
-		SendPost("${pageContext.request.contextPath }/board/list",{"p":${cv.currentPage },"s":${cv.pageSize },"b":${cv.blockSize }},"post");
+		SendPost("${pageContext.request.contextPath }/board/listNotice",{"p":${cv.currentPage },"s":${cv.pageSize },"b":${cv.blockSize }},"post");
 	}
 </script>
 <style type="text/css">

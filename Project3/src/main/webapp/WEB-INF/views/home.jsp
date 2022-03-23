@@ -89,17 +89,9 @@
 				<li><a href="board/listNotice">공지사항</a></li>
 				<li><a href="board/list">후기게시판</a></li>
 				<li><a href="board/listFree">자유게시판</a></li>
-				<li><a href="board/QnA">Q&A</a></li>
+				<li><a href="board/listQnA">Q&A</a></li>
 			</ul>
 		</nav>
-		
-		<!-- Scripts 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		-->
 	</div>
 </body>
 </html>

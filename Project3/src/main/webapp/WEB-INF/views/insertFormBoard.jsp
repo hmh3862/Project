@@ -137,7 +137,7 @@
 		<table id="main_content">
 			<tr>
 				<td colspan="4" class="title" >
-				자료실 새글쓰기
+				후기게시판 새글쓰기
 					<%-- 페이지번호, 페이지 크기, 블록크기를 숨겨서 넘긴다.  --%>
 					<input type="hidden" name="p"  value="${cv.currentPage }"/>
 					<input type="hidden" name="s"  value="${cv.pageSize }"/>

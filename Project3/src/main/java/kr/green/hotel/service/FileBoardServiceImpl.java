@@ -91,7 +91,7 @@ public class FileBoardServiceImpl implements FileBoardService {
 	}
 	@Override
 	public void delete(FileBoardVO fileBoardVO, String uploadPath) {
-		log.info("{}의 update 호출 : {}", this.getClass().getName(), fileBoardVO + "\n" + uploadPath);
+		log.info("{}의 delete 호출 : {}", this.getClass().getName(), fileBoardVO + "\n" + uploadPath);
 		FileBoardVO dbVO = fileBoardDAO.selectByIdx(fileBoardVO.getIdx());
 		if(dbVO!=null && dbVO.getPassword().equals(fileBoardVO.getPassword())) { // DB의 비번과 입력한 비번이 같은 경우에만
 			// 글삭제

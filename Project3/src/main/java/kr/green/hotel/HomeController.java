@@ -57,9 +57,4 @@ public class HomeController {
         }
         return userName;
     }
-	
-//	@RequestMapping(value = "/board/list")
-//	public String boardList() {
-//		return "list";
-//	}
 }

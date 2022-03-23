@@ -92,7 +92,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 	@Override
 	public void delete(FreeBoardVO freeBoardVO, String uploadPath) {
-		log.info("{}의 update 호출 : {}", this.getClass().getName(), freeBoardVO + "\n" + uploadPath);
+		log.info("{}의 delete 호출 : {}", this.getClass().getName(), freeBoardVO + "\n" + uploadPath);
 		FreeBoardVO dbVO = freeBoardDAO.selectByIdx(freeBoardVO.getIdx());
 		if(dbVO!=null && dbVO.getPassword().equals(freeBoardVO.getPassword())) { // DB의 비번과 입력한 비번이 같은 경우에만
 			// 글삭제

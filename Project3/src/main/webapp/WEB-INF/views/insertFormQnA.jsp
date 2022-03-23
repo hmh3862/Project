@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판 새글쓰기</title>
+<title>Q&A 새글쓰기</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -117,7 +117,7 @@
 		return true;
 	}
 	function goList(){
-		SendPost("${pageContext.request.contextPath }/board/listFree",{"p":${cv.currentPage },"s":${cv.pageSize },"b":${cv.blockSize }},"post");
+		SendPost("${pageContext.request.contextPath }/board/listQnA",{"p":${cv.currentPage },"s":${cv.pageSize },"b":${cv.blockSize }},"post");
 	}
 </script>
 <style type="text/css">
@@ -137,7 +137,7 @@
 		<table id="main_content">
 			<tr>
 				<td colspan="4" class="title" >
-				자유게시판 새글쓰기
+				Q&A 새글쓰기
 					<%-- 페이지번호, 페이지 크기, 블록크기를 숨겨서 넘긴다.  --%>
 					<input type="hidden" name="p"  value="${cv.currentPage }"/>
 					<input type="hidden" name="s"  value="${cv.pageSize }"/>

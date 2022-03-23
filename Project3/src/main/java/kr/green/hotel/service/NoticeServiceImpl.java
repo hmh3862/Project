@@ -64,7 +64,7 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 	@Override
 	public void delete(NoticeVO noticeVO, String uploadPath) {
-		log.info("{}의 update 호출 : {}", this.getClass().getName(), noticeVO + "\n" + uploadPath);
+		log.info("{}의 delete 호출 : {}", this.getClass().getName(), noticeVO + "\n" + uploadPath);
 		NoticeVO dbVO = noticeDAO.selectByIdx(noticeVO.getIdx());
 		if(dbVO!=null && dbVO.getPassword().equals(noticeVO.getPassword())) { // DB의 비번과 입력한 비번이 같은 경우에만
 			// 글삭제
