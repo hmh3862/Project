@@ -149,7 +149,7 @@
 				<td> 
 					<input type="text" id="name" name="name" size="30" />
 				</td>
-				<th>비번</th>
+				<th>비밀번호</th>
 				<td> 
 					<input type="password" id="password" name="password" size="30" />
 				</td>
@@ -167,7 +167,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th valign="top">자료</th>
+				<th valign="top">첨부파일</th>
 				<td colspan="3"> 
 					<input type="button" value=" + " class="btn btn-outline-success btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
 					<input type="button" value=" - " class="btn btn-outline-success btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>

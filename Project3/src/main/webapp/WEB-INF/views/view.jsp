@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 내용보기</title>
+<title>후기게시판 내용보기</title>
 <!--  엑시콘사용 : 다운로드받은 폴더를 넣고 CSS파일을 읽는다. -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 
@@ -102,7 +102,7 @@
 	<table id="main_content">
 		<tr>
 			<td colspan="4" class="title" >
-			게시판 내용보기
+			후기게시판 내용보기
 			</td>
 		</tr>
 		<tr>
@@ -129,7 +129,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th valign="top">자료</th>
+			<th valign="top">첨부파일</th>
 			<td colspan="3"> 
 				<%-- 첨부파일을 다운 받도록 링크를 달아준다. --%>
 				<c:if test="${not empty fv.fileList }">

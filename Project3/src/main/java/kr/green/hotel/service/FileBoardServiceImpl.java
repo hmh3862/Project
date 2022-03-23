@@ -75,7 +75,7 @@ public class FileBoardServiceImpl implements FileBoardService {
 		log.info("{}의 insert 호출 : {}", this.getClass().getName(), fileBoardVO);
 		// 컨트롤러에 있는 파일을 저장하는 부분을 유틸리티 클래스로 빼주면 컨트롤러가 간단해 진다.
 		if(fileBoardVO!=null) {
-			// 1. 글을 조장한다.
+			// 1. 글을 저장한다.
 			fileBoardDAO.insert(fileBoardVO);
 			// 저장을 했으면 저장된 idx값을 얻어온다
 			int ref = fileBoardDAO.selectSeq();
