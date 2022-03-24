@@ -31,4 +31,6 @@ public class QnAVO {
 	private String 	content;
 	private Date 	regDate;
 	private String 	ip;
+	// 첨부파일의 정보를 저장할 필드 추가
+	private List<QnAFileVO> fileList;
 }

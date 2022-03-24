@@ -145,8 +145,8 @@
 		</tr>
 		<tr>
 			<td colspan="4" class="info">
-				<input type="button" value=" 수정가기 " class="btn btn-outline-success btn-sm" onclick="goUpdate()"/>
-				<input type="button" value=" 삭제가기 " class="btn btn-outline-success btn-sm" onclick="goDelete()"/>
+				<input type="button" value=" 수정하기 " class="btn btn-outline-success btn-sm" onclick="goUpdate()"/>
+				<input type="button" value=" 삭제하기 " class="btn btn-outline-danger btn-sm" onclick="goDelete()"/>
 				<input type="button" value=" 돌아가기 " class="btn btn-outline-success btn-sm" onclick="goBack()"/>
 			</td>
 		</tr>

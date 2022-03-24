@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>후기 게시판</title>
+<title>후기게시판</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://kit.fontawesome.com/5835e4ac0d.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
 <body>
 	<table id="content">
 		<tr>
-			<td colspan="5" class="title">후기 게시판</td>
+			<td colspan="5" class="title">후기게시판</td>
 		</tr>
 		<tr>
 			<td colspan="5" class="info">

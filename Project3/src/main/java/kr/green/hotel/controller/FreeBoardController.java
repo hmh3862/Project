@@ -225,7 +225,7 @@ public class FreeBoardController {
 		FreeBoardVO freeBoardVO = freeBoardService.selectByIdx(commVO.getIdx());
 		model.addAttribute("fv", freeBoardVO);
 		model.addAttribute("cv", commVO);
-		return "delete";
+		return "deleteFree";
 	}
 
 	@RequestMapping(value = "/board/deleteOKFree",method = RequestMethod.GET)

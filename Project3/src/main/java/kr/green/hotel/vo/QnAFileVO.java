@@ -1,16 +1,10 @@
--- 글의 내용을 저장할 테이블
-DROP SEQUENCE qna_idx_seq;
-CREATE SEQUENCE qna_idx_seq;
-DROP TABLE qna;
-CREATE TABLE qna(
-	idx NUMBER PRIMARY KEY,
-	name varchar2(50) NOT NULL,
-	password varchar2(50) NOT NULL,
-	subject varchar2(500) NOT NULL,
-	content varchar2(4000) NOT NULL,
-	regDate timestamp  DEFAULT SYSDATE,
-	ip varchar2(50) NOT NULL
-);
+package kr.green.hotel.vo;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+import lombok.Data;
+
+/*
 -- 해당글의 첨부파일 정보를 저장할 테이블
 DROP SEQUENCE qnaFile_idx_seq;
 CREATE SEQUENCE qnaFile_idx_seq;
@@ -21,6 +15,12 @@ CREATE TABLE qnaFile(
 	saveName varchar2(500) NOT NULL, -- 저장파일명
 	oriName  varchar2(500) NOT NULL  -- 원본파일명
 );
-
-SELECT * FROM qna;
-SELECT * FROM qnaFile;
+ */
+@XmlRootElement
+@Data
+public class QnAFileVO {
+	private int 	idx;
+	private int 	ref;
+	private String 	saveName;
+	private String 	oriName;
+}

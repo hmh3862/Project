@@ -2,7 +2,9 @@ package kr.green.hotel.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -25,7 +27,9 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import kr.green.hotel.service.QnAService;
 import kr.green.hotel.vo.CommVO;
+import kr.green.hotel.vo.FreeBoardFileVO;
 import kr.green.hotel.vo.PagingVO;
+import kr.green.hotel.vo.QnAFileVO;
 import kr.green.hotel.vo.QnAVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -74,7 +78,35 @@ public class QnAController {
 		// 일단 VO로 받고
 		qnaVO.setIp(request.getRemoteAddr()); // 아이피 추가로 넣어주고 
 		log.info("{}의 insertOkPost 호출 : {}", this.getClass().getName(), commVO + "\n" + qnaVO);
-
+		
+		// 넘어온 파일 처리를 하자
+		List<QnAFileVO> fileList = new ArrayList<>(); // 파일 정보를 저장할 리스트
+		
+		List<MultipartFile> multipartFiles = request.getFiles("upfile"); // 넘어온 파일 리스트
+		if(multipartFiles!=null && multipartFiles.size()>0) {  // 파일이 있다면
+			for(MultipartFile multipartFile : multipartFiles) {
+				if(multipartFile!=null && multipartFile.getSize()>0 ) { // 현재 파일이 존재한다면
+					QnAFileVO qnaFileVO = new QnAFileVO(); // 객체 생성하고
+					// 파일 저장하고
+					try {
+						// 저장이름
+						String realPath = request.getRealPath("upload");
+						String saveName = UUID.randomUUID() + "_" + multipartFile.getOriginalFilename();
+						// 저장
+						File target = new File(realPath, saveName);
+						FileCopyUtils.copy(multipartFile.getBytes(), target);
+						// vo를 채우고
+						qnaFileVO.setOriName(multipartFile.getOriginalFilename());
+						qnaFileVO.setSaveName(saveName);
+						// 리스트에 추가하고
+						fileList.add(qnaFileVO); 
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		qnaVO.setFileList(fileList);
 		// 서비스를 호출하여 저장을 수행한다.
 		qnaService.insert(qnaVO);
 		
@@ -137,6 +169,40 @@ public class QnAController {
 		qnaVO.setIp(request.getRemoteAddr()); // 아이피 추가로 넣어주고 
 		log.info("{}의 updateOKPost 호출 : {}", this.getClass().getName(), commVO + "\n" + qnaVO);
 
+		// 넘어온 파일 처리를 하자
+		List<QnAFileVO> fileList = new ArrayList<>(); // 파일 정보를 저장할 리스트
+		
+		List<MultipartFile> multipartFiles = request.getFiles("upfile"); // 넘어온 파일 리스트
+		if(multipartFiles!=null && multipartFiles.size()>0) {  // 파일이 있다면
+			for(MultipartFile multipartFile : multipartFiles) {
+				if(multipartFile!=null && multipartFile.getSize()>0 ) { // 현재 파일이 존재한다면
+					QnAFileVO qnaFileVO = new QnAFileVO(); // 객체 생성하고
+					// 파일 저장하고
+					try {
+						// 저장이름
+						String realPath = request.getRealPath("upload");
+						String saveName = UUID.randomUUID() + "_" + multipartFile.getOriginalFilename();
+						// 저장
+						File target = new File(realPath, saveName);
+						FileCopyUtils.copy(multipartFile.getBytes(), target);
+						// vo를 채우고
+						qnaFileVO.setOriName(multipartFile.getOriginalFilename());
+						qnaFileVO.setSaveName(saveName);
+						// 리스트에 추가하고
+						fileList.add(qnaFileVO); 
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		qnaVO.setFileList(fileList);
+		// 삭제할 파일 번호를 받아서 삭제할 파일을 삭제해 주어야 한다.
+		String[] delFiles = request.getParameterValues("delfile");
+		// 서비스를 호출하여 저장을 수행한다.
+		String realPath = request.getRealPath("upload");
+		qnaService.update(qnaVO, delFiles, realPath);
+		
 		// redirect시 GET전송 하기
 		// return "redirect:/board/list?p=1&s=" + commVO.getPageSize() + "&b=" + commVO.getBlockSize();
 		// redirect시 POST전송 하기
