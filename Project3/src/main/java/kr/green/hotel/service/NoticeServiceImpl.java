@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.green.hotel.dao.NoticeDAO;
 import kr.green.hotel.dao.NoticeFileDAO;
-import kr.green.hotel.vo.CommVO;
+import kr.green.hotel.vo.CommNoticeVO;
 import kr.green.hotel.vo.NoticeFileVO;
 import kr.green.hotel.vo.NoticeVO;
 import kr.green.hotel.vo.PagingVO;
@@ -28,14 +28,14 @@ public class NoticeServiceImpl implements NoticeService {
 	private NoticeFileDAO noticeFileDAO;
 	
 	@Override
-	public PagingVO<NoticeVO> selectList(CommVO commVO) {
-		log.info("{}의 selectList 호출 : {}", this.getClass().getName(), commVO);
+	public PagingVO<NoticeVO> selectList(CommNoticeVO commNoticeVO) {
+		log.info("{}의 selectList 호출 : {}", this.getClass().getName(), commNoticeVO);
 		PagingVO<NoticeVO> pagingVO = null;
 		try {
 			// 전체 개수 구하기
 			int totalCount = noticeDAO.selectCount();
 			// 페이지 계산
-			pagingVO = new PagingVO<>(commVO.getCurrentPage(), commVO.getPageSize(), commVO.getBlockSize(), totalCount);
+			pagingVO = new PagingVO<>(commNoticeVO.getCurrentPage(), commNoticeVO.getPageSize(), commNoticeVO.getBlockSize(), totalCount);
 			// 글을 읽어오기
 			HashMap<String, Integer> map = new HashMap<String, Integer>();
 			map.put("startNo", pagingVO.getStartNo() );

@@ -155,18 +155,18 @@ public class FileBoardController {
 		return "update";
 	}
 	
-	@RequestMapping(value = "/board/updateOK",method = RequestMethod.GET)
-	public String updateOKGet(@ModelAttribute CommVO commVO,Model model) {
+	@RequestMapping(value = "/board/updateOk",method = RequestMethod.GET)
+	public String updateOkGet(@ModelAttribute CommVO commVO,Model model) {
 		return "redirect:/board/list";
 	}
-	@RequestMapping(value = "/board/updateOK",method = RequestMethod.POST)
-	public String updateOKPost(@ModelAttribute CommVO commVO,
+	@RequestMapping(value = "/board/updateOk",method = RequestMethod.POST)
+	public String updateOkPost(@ModelAttribute CommVO commVO,
 			@ModelAttribute FileBoardVO fileBoardVO, 
 			MultipartHttpServletRequest request, Model model,
 			RedirectAttributes redirectAttributes) {
 		// 일단 VO로 받고
 		fileBoardVO.setIp(request.getRemoteAddr()); // 아이피 추가로 넣어주고 
-		log.info("{}의 updateOKPost 호출 : {}", this.getClass().getName(), commVO + "\n" + fileBoardVO);
+		log.info("{}의 updateOkPost 호출 : {}", this.getClass().getName(), commVO + "\n" + fileBoardVO);
 
 		// 넘어온 파일 처리를 하자
 		List<FileBoardFileVO> fileList = new ArrayList<>(); // 파일 정보를 저장할 리스트
@@ -228,17 +228,17 @@ public class FileBoardController {
 		return "delete";
 	}
 
-	@RequestMapping(value = "/board/deleteOK",method = RequestMethod.GET)
-	public String deleteOKGet(@ModelAttribute CommVO commVO,Model model) {
+	@RequestMapping(value = "/board/deleteOk",method = RequestMethod.GET)
+	public String deleteOkGet(@ModelAttribute CommVO commVO,Model model) {
 		return "redirect:/board/list";
 	}
-	@RequestMapping(value = "/board/deleteOK",method = RequestMethod.POST)
-	public String deleteOKPost(@ModelAttribute CommVO commVO,
+	@RequestMapping(value = "/board/deleteOk",method = RequestMethod.POST)
+	public String deleteOkPost(@ModelAttribute CommVO commVO,
 			@ModelAttribute FileBoardVO fileBoardVO, 
 			HttpServletRequest request,
 			RedirectAttributes redirectAttributes) {
 		// 일단 VO로 받고
-		log.info("{}의 deleteOKPost 호출 : {}", this.getClass().getName(), commVO + "\n" + fileBoardVO);
+		log.info("{}의 deleteOkPost 호출 : {}", this.getClass().getName(), commVO + "\n" + fileBoardVO);
 		// 실제 경로 구하고
 		String realPath = request.getRealPath("upload");
 		// 서비스를 호출하여 삭제를 수행하고

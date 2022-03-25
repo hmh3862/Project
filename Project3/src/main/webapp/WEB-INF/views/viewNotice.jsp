@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 내용보기</title>
+<title>공지사항 내용보기</title>
 <!--  엑시콘사용 : 다운로드받은 폴더를 넣고 CSS파일을 읽는다. -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 
@@ -78,13 +78,13 @@
 	//-----------------------------------------------------------------------------------------------------------
 	// 돌아가기버튼 클릭시 사용할 함수
 	function goBack(){
-		SendPost("${pageContext.request.contextPath}/board/freeList", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize}});
+		SendPost("${pageContext.request.contextPath}/board/listNotice", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize}});
 	}
 	function goUpdate(){
-		SendPost("${pageContext.request.contextPath}/board/update", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
+		SendPost("${pageContext.request.contextPath}/board/updateNotice", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
 	}
 	function goDelete(){
-		SendPost("${pageContext.request.contextPath}/board/delete", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
+		SendPost("${pageContext.request.contextPath}/board/deleteNotice", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
 	}
 </script>
 <style type="text/css">
@@ -102,7 +102,7 @@
 	<table id="main_content">
 		<tr>
 			<td colspan="4" class="title" >
-			게시판 내용보기
+			공지사항 내용보기
 			</td>
 		</tr>
 		<tr>
@@ -129,7 +129,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th valign="top">자료</th>
+			<th valign="top">첨부파일</th>
 			<td colspan="3"> 
 				<%-- 첨부파일을 다운 받도록 링크를 달아준다. --%>
 				<c:if test="${not empty fv.fileList }">
@@ -145,8 +145,8 @@
 		</tr>
 		<tr>
 			<td colspan="4" class="info">
-				<input type="button" value=" 수정가기 " class="btn btn-outline-success btn-sm" onclick="goUpdate()"/>
-				<input type="button" value=" 삭제가기 " class="btn btn-outline-success btn-sm" onclick="goDelete()"/>
+				<input type="button" value=" 수정하기 " class="btn btn-outline-success btn-sm" onclick="goUpdate()"/>
+				<input type="button" value=" 삭제하기 " class="btn btn-outline-danger btn-sm" onclick="goDelete()"/>
 				<input type="button" value=" 돌아가기 " class="btn btn-outline-success btn-sm" onclick="goBack()"/>
 			</td>
 		</tr>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>후기게시판 수정하기</title>
+<title>자유게시판 수정하기</title>
 <!--  엑시콘사용 : 다운로드받은 폴더를 넣고 CSS파일을 읽는다. -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 
@@ -140,11 +140,11 @@
 </head>
 <body>
 	<%-- ${cv } --%>
-	<form action="${pageContext.request.contextPath}/board/updateOk" method="post" enctype="multipart/form-data" onsubmit="return formCheck();" >
+	<form action="${pageContext.request.contextPath}/board/updateOkFree" method="post" enctype="multipart/form-data" onsubmit="return formCheck();" >
 		<table id="main_content">
 			<tr>
 				<td colspan="4" class="title" >
-				후기게시판 수정하기
+				자유게시판 수정하기
 					<%-- 페이지번호, 페이지 크기, 블록크기를 숨겨서 넘긴다.  --%>
 					<input type="hidden" name="p"  value="${cv.currentPage }"/>
 					<input type="hidden" name="s"  value="${cv.pageSize }"/>

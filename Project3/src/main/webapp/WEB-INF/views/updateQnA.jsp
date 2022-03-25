@@ -84,7 +84,7 @@
 	//-----------------------------------------------------------------------------------------------------------
 	// 돌아가기버튼 클릭시 사용할 함수
 	function goBack(){
-		SendPost("${pageContext.request.contextPath}/board/view", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
+		SendPost("${pageContext.request.contextPath}/board/viewQnA", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
 	}
 	// 폼의 값 유효성 검사하기 스크립트
 	function formCheck(){
@@ -140,7 +140,7 @@
 </head>
 <body>
 	<%-- ${cv } --%>
-	<form action="${pageContext.request.contextPath}/board/updateOk" method="post" enctype="multipart/form-data" onsubmit="return formCheck();" >
+	<form action="${pageContext.request.contextPath}/board/updateOkQnA" method="post" enctype="multipart/form-data" onsubmit="return formCheck();" >
 		<table id="main_content">
 			<tr>
 				<td colspan="4" class="title" >

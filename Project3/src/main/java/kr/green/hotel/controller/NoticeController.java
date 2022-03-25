@@ -26,7 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import kr.green.hotel.service.NoticeService;
-import kr.green.hotel.vo.CommVO;
+import kr.green.hotel.vo.CommNoticeVO;
 import kr.green.hotel.vo.NoticeFileVO;
 import kr.green.hotel.vo.NoticeVO;
 import kr.green.hotel.vo.PagingVO;
@@ -42,25 +42,25 @@ public class NoticeController {
 	@RequestMapping(value = "/board/listNotice")
 	// public String selectList(@ModelAttribute CommVO commVO, Model model) {
 	// POST전송을 받기위한 방법
-	public String selectList(@RequestParam Map<String, String> params, HttpServletRequest request,@ModelAttribute CommVO commVO, Model model) {
+	public String selectList(@RequestParam Map<String, String> params, HttpServletRequest request,@ModelAttribute CommNoticeVO commNoticeVO, Model model) {
 		// POST전송된것을 받으려면 RequestContextUtils.getInputFlashMap(request)로 맵이 존재하는지 판단해서
 		// 있으면 POST처리를 하고 없으면 GET으로 받아서 처리를 한다.
 		Map<String, ?> flashMap = RequestContextUtils.getInputFlashMap(request);
 		if(flashMap!=null) {
 			params = (Map<String, String>) flashMap.get("map");
-			commVO.setP(Integer.parseInt(params.get("p")));
-			commVO.setS(Integer.parseInt(params.get("s")));
-			commVO.setB(Integer.parseInt(params.get("b")));
+			commNoticeVO.setP(Integer.parseInt(params.get("p")));
+			commNoticeVO.setS(Integer.parseInt(params.get("s")));
+			commNoticeVO.setB(Integer.parseInt(params.get("b")));
 		}
-		PagingVO<NoticeVO> pv = noticeService.selectList(commVO);
+		PagingVO<NoticeVO> pv = noticeService.selectList(commNoticeVO);
 		model.addAttribute("pv", pv);
-		model.addAttribute("cv", commVO);
+		model.addAttribute("cv", commNoticeVO);
 		return "listNotice";
 	}
 	// 입력폼 띄우기
 	@RequestMapping(value = "/board/insertFormNotice")
-	public String insertFormNotice(@ModelAttribute CommVO commVO, Model model) {
-		model.addAttribute("cv", commVO);
+	public String insertFormNotice(@ModelAttribute CommNoticeVO commNoticeVO, Model model) {
+		model.addAttribute("cv", commNoticeVO);
 		return "insertFormNotice";
 	}
 	// 저장하기
@@ -70,13 +70,13 @@ public class NoticeController {
 	}
 	@RequestMapping(value = "/board/insertOkNotice", method = RequestMethod.POST)
 	public String insertOkPost(
-			@ModelAttribute CommVO commVO,
+			@ModelAttribute CommNoticeVO commNoticeVO,
 			@ModelAttribute NoticeVO noticeVO, 
 			MultipartHttpServletRequest request, Model model,
 			RedirectAttributes redirectAttributes) { // redirect시 POST전송을 위해 RedirectAttributes 변수 추가
 		// 일단 VO로 받고
 		noticeVO.setIp(request.getRemoteAddr()); // 아이피 추가로 넣어주고 
-		log.info("{}의 insertOkPost 호출 : {}", this.getClass().getName(), commVO + "\n" + noticeVO);
+		log.info("{}의 insertOkPost 호출 : {}", this.getClass().getName(), commNoticeVO + "\n" + noticeVO);
 		
 		// 넘어온 파일 처리를 하자
 		List<NoticeFileVO> fileList = new ArrayList<>(); // 파일 정보를 저장할 리스트
@@ -115,8 +115,8 @@ public class NoticeController {
 		// Redirect시 POST전송 하려면 map에 넣어서 RedirectAttributes에 담아서 전송하면 된다.
 		Map<String, String> map = new HashMap<>();
 		map.put("p", "1");
-		map.put("s", commVO.getPageSize() + "");
-		map.put("b",commVO.getBlockSize() + "");
+		map.put("s", commNoticeVO.getPageSize() + "");
+		map.put("b",commNoticeVO.getBlockSize() + "");
 		redirectAttributes.addFlashAttribute("map", map);
 		return "redirect:/board/listNotice";
 	}
@@ -124,49 +124,49 @@ public class NoticeController {
 	// 내용보기 : 글 1개를 읽어서 보여준다
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/board/viewNotice")
-	public String view(@RequestParam Map<String, String> params, HttpServletRequest request,@ModelAttribute CommVO commVO,Model model) {
-		log.info("{}의 view호출 : {}", this.getClass().getName(), commVO);
+	public String view(@RequestParam Map<String, String> params, HttpServletRequest request,@ModelAttribute CommNoticeVO commNoticeVO,Model model) {
+		log.info("{}의 view호출 : {}", this.getClass().getName(), commNoticeVO);
 		// POST전송된것을 받으려면 RequestContextUtils.getInputFlashMap(request)로 맵이 존재하는지 판단해서
 		// 있으면 POST처리를 하고 없으면 GET으로 받아서 처리를 한다.
 		Map<String, ?> flashMap = RequestContextUtils.getInputFlashMap(request);
 		if(flashMap!=null) {
 			params = (Map<String, String>) flashMap.get("map");
-			commVO.setP(Integer.parseInt(params.get("p")));
-			commVO.setS(Integer.parseInt(params.get("s")));
-			commVO.setB(Integer.parseInt(params.get("b")));
-			commVO.setIdx(Integer.parseInt(params.get("idx")));
+			commNoticeVO.setP(Integer.parseInt(params.get("p")));
+			commNoticeVO.setS(Integer.parseInt(params.get("s")));
+			commNoticeVO.setB(Integer.parseInt(params.get("b")));
+			commNoticeVO.setIdx(Integer.parseInt(params.get("idx")));
 		}
 		
-		NoticeVO noticeVO = noticeService.selectByIdx(commVO.getIdx());
+		NoticeVO noticeVO = noticeService.selectByIdx(commNoticeVO.getIdx());
 		model.addAttribute("fv", noticeVO);
-		model.addAttribute("cv", commVO);
+		model.addAttribute("cv", commNoticeVO);
 		return "viewNotice";
 	}
 	// 수정하기
 	@RequestMapping(value = "/board/updateNotice",method = RequestMethod.GET)
-	public String updateGet(@ModelAttribute CommVO commVO,Model model) {
+	public String updateGet(@ModelAttribute CommNoticeVO commNoticeVO,Model model) {
 		return "redirect:/board/listNotice";
 	}
 	@RequestMapping(value = "/board/updateNotice",method = RequestMethod.POST)
-	public String updatePost(@ModelAttribute CommVO commVO,Model model) {
-		NoticeVO noticeVO = noticeService.selectByIdx(commVO.getIdx());
+	public String updatePost(@ModelAttribute CommNoticeVO commNoticeVO,Model model) {
+		NoticeVO noticeVO = noticeService.selectByIdx(commNoticeVO.getIdx());
 		model.addAttribute("fv", noticeVO);
-		model.addAttribute("cv", commVO);
+		model.addAttribute("cv", commNoticeVO);
 		return "updateNotice";
 	}
 	
-	@RequestMapping(value = "/board/updateOKNotice",method = RequestMethod.GET)
-	public String updateOKGet(@ModelAttribute CommVO commVO,Model model) {
+	@RequestMapping(value = "/board/updateOkNotice",method = RequestMethod.GET)
+	public String updateOkGet(@ModelAttribute CommNoticeVO commNoticeVO,Model model) {
 		return "redirect:/board/listNotice";
 	}
-	@RequestMapping(value = "/board/updateOKNotice",method = RequestMethod.POST)
-	public String updateOKPost(@ModelAttribute CommVO commVO,
+	@RequestMapping(value = "/board/updateOkNotice",method = RequestMethod.POST)
+	public String updateOkPost(@ModelAttribute CommNoticeVO commNoticeVO,
 			@ModelAttribute NoticeVO noticeVO, 
 			MultipartHttpServletRequest request, Model model,
 			RedirectAttributes redirectAttributes) {
 		// 일단 VO로 받고
 		noticeVO.setIp(request.getRemoteAddr()); // 아이피 추가로 넣어주고 
-		log.info("{}의 updateOKPost 호출 : {}", this.getClass().getName(), commVO + "\n" + noticeVO);
+		log.info("{}의 updateOkPost 호출 : {}", this.getClass().getName(), commNoticeVO + "\n" + noticeVO);
 
 		// 넘어온 파일 처리를 하자
 		List<NoticeFileVO> fileList = new ArrayList<>(); // 파일 정보를 저장할 리스트
@@ -207,38 +207,38 @@ public class NoticeController {
 		// redirect시 POST전송 하기
 		// Redirect시 POST전송 하려면 map에 넣어서 RedirectAttributes에 담아서 전송하면 된다.
 		Map<String, String> map = new HashMap<>();
-		map.put("p", commVO.getCurrentPage() + "");
-		map.put("s", commVO.getPageSize() + "");
-		map.put("b",commVO.getBlockSize() + "");
-		map.put("idx",commVO.getIdx() + "");
+		map.put("p", commNoticeVO.getCurrentPage() + "");
+		map.put("s", commNoticeVO.getPageSize() + "");
+		map.put("b",commNoticeVO.getBlockSize() + "");
+		map.put("idx",commNoticeVO.getIdx() + "");
 		redirectAttributes.addFlashAttribute("map", map);
 		return "redirect:/board/viewNotice";
 	}
 	
 	// 삭제하기
 	@RequestMapping(value = "/board/deleteNotice",method = RequestMethod.GET)
-	public String deleteGet(@ModelAttribute CommVO commVO,Model model) {
+	public String deleteGet(@ModelAttribute CommNoticeVO commNoticeVO,Model model) {
 		return "redirect:/board/listNotice";
 	}
 	@RequestMapping(value = "/board/deleteNotice",method = RequestMethod.POST)
-	public String deletePost(@ModelAttribute CommVO commVO,Model model) {
-		NoticeVO noticeVO = noticeService.selectByIdx(commVO.getIdx());
+	public String deletePost(@ModelAttribute CommNoticeVO commNoticeVO,Model model) {
+		NoticeVO noticeVO = noticeService.selectByIdx(commNoticeVO.getIdx());
 		model.addAttribute("fv", noticeVO);
-		model.addAttribute("cv", commVO);
+		model.addAttribute("cv", commNoticeVO);
 		return "deleteNotice";
 	}
 
-	@RequestMapping(value = "/board/deleteOKNotice",method = RequestMethod.GET)
-	public String deleteOKGet(@ModelAttribute CommVO commVO,Model model) {
+	@RequestMapping(value = "/board/deleteOkNotice",method = RequestMethod.GET)
+	public String deleteOkGet(@ModelAttribute CommNoticeVO commNoticeVO,Model model) {
 		return "redirect:/board/listNotice";
 	}
-	@RequestMapping(value = "/board/deleteOKNotice",method = RequestMethod.POST)
-	public String deleteOKPost(@ModelAttribute CommVO commVO,
+	@RequestMapping(value = "/board/deleteOkNotice",method = RequestMethod.POST)
+	public String deleteOkPost(@ModelAttribute CommNoticeVO commNoticeVO,
 			@ModelAttribute NoticeVO noticeVO, 
 			HttpServletRequest request,
 			RedirectAttributes redirectAttributes) {
 		// 일단 VO로 받고
-		log.info("{}의 deleteOKPost 호출 : {}", this.getClass().getName(), commVO + "\n" + noticeVO);
+		log.info("{}의 deleteOkPost 호출 : {}", this.getClass().getName(), commNoticeVO + "\n" + noticeVO);
 		// 실제 경로 구하고
 		String realPath = request.getRealPath("upload");
 		// 서비스를 호출하여 삭제를 수행하고
@@ -249,9 +249,9 @@ public class NoticeController {
 		// redirect시 POST전송 하기
 		// Redirect시 POST전송 하려면 map에 넣어서 RedirectAttributes에 담아서 전송하면 된다.
 		Map<String, String> map = new HashMap<>();
-		map.put("p", commVO.getCurrentPage() + "");
-		map.put("s", commVO.getPageSize() + "");
-		map.put("b",commVO.getBlockSize() + "");
+		map.put("p", commNoticeVO.getCurrentPage() + "");
+		map.put("s", commNoticeVO.getPageSize() + "");
+		map.put("b",commNoticeVO.getBlockSize() + "");
 		redirectAttributes.addFlashAttribute("map", map);
 		return "redirect:/board/listNotice";
 	}

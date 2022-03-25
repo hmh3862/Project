@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유 게시판</title>
+<title>자유게시판</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://kit.fontawesome.com/5835e4ac0d.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
 <body>
 	<table id="content">
 		<tr>
-			<td colspan="5" class="title">자유 게시판</td>
+			<td colspan="5" class="title">자유게시판</td>
 		</tr>
 		<tr>
 			<td colspan="5" class="info">
@@ -43,7 +43,7 @@
 					$(function(){
 						$("#listCount").change(function(){
 							var pageSize = $(this).val();
-							SendPost("${pageContext.request.contextPath }/board/list", {"p":${cv.currentPage},"s":pageSize,"b":${cv.blockSize}});
+							SendPost("${pageContext.request.contextPath }/board/listFree", {"p":${cv.currentPage},"s":pageSize,"b":${cv.blockSize}});
 						});	
 					});
 				</script>
@@ -73,7 +73,7 @@
 				<tr align="center">
 					<td>${vo.idx }</td>
 					<td align="left" >
-						<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/view",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'><c:out value="${vo.subject }"></c:out></a>
+						<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/viewFree",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'><c:out value="${vo.subject }"></c:out></a>
 						<%-- 오늘 저장한 글이면 new 아이콘을 달아보자  --%>		
 						<jsp:useBean id="today" scope="request" class="java.util.Date"></jsp:useBean>				
 						<fmt:formatDate value="${today }" pattern="yyyyMMdd" var="day"/> 
