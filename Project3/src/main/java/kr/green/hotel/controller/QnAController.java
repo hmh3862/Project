@@ -59,10 +59,10 @@ public class QnAController {
 		return "listQnA";
 	}
 	// 입력폼 띄우기
-	@RequestMapping(value = "/board/insertFormQnA")
-	public String insertFormQnA(@ModelAttribute CommVO commVO, Model model) {
+	@RequestMapping(value = "/board/insertQnA")
+	public String insertQnA(@ModelAttribute CommVO commVO, Model model) {
 		model.addAttribute("cv", commVO);
-		return "insertFormQnA";
+		return "insertQnA";
 	}
 	// 저장하기
 	@RequestMapping(value = "/board/insertOkQnA", method = RequestMethod.GET)

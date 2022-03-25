@@ -111,7 +111,7 @@
 		<tr>
 			<td class="info" colspan="5">
 				<button type="button" class="btn btn-outline-success btn-sm" 
-			        onclick='SendPost("${pageContext.request.contextPath }/board/insertFormQnA",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
+			        onclick='SendPost("${pageContext.request.contextPath }/board/insertQnA",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
 			</td>
 		</tr>
 	</table>	

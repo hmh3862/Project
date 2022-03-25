@@ -58,10 +58,10 @@ public class FreeBoardController {
 		return "listFree";
 	}
 	// 입력폼 띄우기
-	@RequestMapping(value = "/board/insertFormFree")
-	public String insertFormFree(@ModelAttribute CommVO commVO, Model model) {
+	@RequestMapping(value = "/board/insertFree")
+	public String insertFree(@ModelAttribute CommVO commVO, Model model) {
 		model.addAttribute("cv", commVO);
-		return "insertFormFree";
+		return "insertFree";
 	}
 	// 저장하기
 	@RequestMapping(value = "/board/insertOkFree", method = RequestMethod.GET)

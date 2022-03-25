@@ -58,10 +58,10 @@ public class FileBoardController {
 		return "list";
 	}
 	// 입력폼 띄우기
-	@RequestMapping(value = "/board/insertFormBoard")
-	public String insertFormBoard(@ModelAttribute CommVO commVO, Model model) {
+	@RequestMapping(value = "/board/insertBoard")
+	public String insertBoard(@ModelAttribute CommVO commVO, Model model) {
 		model.addAttribute("cv", commVO);
-		return "insertFormBoard";
+		return "insertBoard";
 	}
 	// 저장하기
 	@RequestMapping(value = "/board/insertOk", method = RequestMethod.GET)

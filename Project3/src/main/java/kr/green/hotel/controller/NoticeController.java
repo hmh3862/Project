@@ -58,10 +58,10 @@ public class NoticeController {
 		return "listNotice";
 	}
 	// 입력폼 띄우기
-	@RequestMapping(value = "/board/insertFormNotice")
-	public String insertFormNotice(@ModelAttribute CommNoticeVO commNoticeVO, Model model) {
+	@RequestMapping(value = "/board/insertNotice")
+	public String insertNotice(@ModelAttribute CommNoticeVO commNoticeVO, Model model) {
 		model.addAttribute("cv", commNoticeVO);
-		return "insertFormNotice";
+		return "insertNotice";
 	}
 	// 저장하기
 	@RequestMapping(value = "/board/insertOkNotice", method = RequestMethod.GET)
