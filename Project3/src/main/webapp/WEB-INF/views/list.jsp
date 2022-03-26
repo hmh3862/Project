@@ -112,6 +112,8 @@
 			<td class="info" colspan="5">
 				<button type="button" class="btn btn-outline-success btn-sm" 
 			        onclick='SendPost("${pageContext.request.contextPath }/board/insertBoard",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
+				<!-- <button type="button" class="btn btn-outline-success btn-sm" 
+			        onclick="${pageContext.request.contextPath }/">홈으로</button> -->
 			</td>
 		</tr>
 	</table>	

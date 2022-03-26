@@ -191,7 +191,7 @@
 				</c:if>					 
 					<hr />
 					<input type="button" value=" + " class="btn btn-outline-success btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
-					<input type="button" value=" - " class="btn btn-outline-success btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
+					<input type="button" value=" - " class="btn btn-outline-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
 					<span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span>
 					<br />
 					<div id="fileBox">
