@@ -18,7 +18,15 @@
 <script src="${pageContext.request.contextPath}/resources/js/comm.js"></script>
 <script>
 	$(function(){
-		
+		// goWrite(){
+			// if(${member_role}=='ROLE_ADMIN'){
+				// SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")
+			// }else{
+				// alert("글쓰기 권한이 없습니다.");
+			// }
+			
+			// SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")
+		// }
 	});
 </script>
 <style type="text/css">
