@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Q&A</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://kit.fontawesome.com/5835e4ac0d.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,10 +24,11 @@
 </script>
 <style type="text/css">
 	* { font-size: 10pt; }
-	table#content{width: 90%; margin: auto;}
-	th {border: 1px solid gray; background-color: silver;padding: 5px; text-align: center;}
+	table#content{width: 80%; margin: auto;}
+	th {border: 1px solid gray; background-color: pink; padding: 5px; text-align: center;}
 	td {border: 1px solid gray; padding: 5px;}
 	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt;}
+	td.home {border:none; padding: 5px; text-align: left;}
 	td.info {border:none; padding: 5px; text-align: right; }
 	td.info2 {border: 1px solid gray; padding: 5px; text-align: center; }
 </style>
@@ -37,6 +39,11 @@
 			<td colspan="5" class="title">Q&A</td>
 		</tr>
 		<tr>
+			<td colspan="2" class="home">
+				<a href="${pageContext.request.contextPath }">
+					<i class="axi axi-home" style="font-size:30px"></i>
+				</a>
+			</td>
 			<td colspan="5" class="info">
 				${pv.pageInfo }
 				<script type="text/javascript">

@@ -28,7 +28,7 @@
 			<article class="box post post-excerpt">
 				<header>
 					<h2><a href="#">Welcome to Healing Stay</a></h2>
-					 <p>경기도 호텔 검색 및 예약 가능</p>
+					 <p>경기도 호텔 검색 및 예약</p>
 				</header>
 			</article>
 			

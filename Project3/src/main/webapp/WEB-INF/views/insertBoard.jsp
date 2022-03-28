@@ -123,7 +123,7 @@
 <style type="text/css">
 	* { font-size: 10pt; }
 	table#main_content{width: 80%; margin: auto;}
-	th {border: 1px solid gray; background-color: silver;padding: 5px; text-align: center;}
+	th {border: 1px solid gray; background-color: pink; padding: 5px; text-align: center;}
 	td {border: 1px solid gray; padding: 5px;}
 	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt;}
 	td.info {border:none; padding: 5px; text-align: right; }
@@ -157,7 +157,7 @@
 			<tr>
 				<th>제목</th>
 				<td colspan="3"> 
-					<input type="text" id="subject" name="subject" size="140" />
+					<input type="text" id="subject" name="subject" size="123" />
 				</td>
 			</tr>
 			<tr>
@@ -169,9 +169,9 @@
 			<tr>
 				<th valign="top">첨부파일</th>
 				<td colspan="3"> 
-					<input type="button" value=" + " class="btn btn-outline-success btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
+					<input type="button" value=" + " class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
 					<input type="button" value=" - " class="btn btn-outline-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
-					<span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span>
+					<!-- <span style="color:orange;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span> -->
 					<br />
 					<div id="fileBox">
 						<div id="fileItem1" class="fileItem"> <input type="file" name="upfile"/></div>
@@ -180,7 +180,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" class="info">
-					<input type="submit" value=" 저장하기 " class="btn btn-outline-success btn-sm" />
+					<input type="submit" value=" 저장하기 " class="btn btn-outline-primary btn-sm" />
 					<input type="button" value=" 돌아가기 " class="btn btn-outline-success btn-sm" onclick="goList()"/>
 				</td>
 			</tr>

@@ -10,7 +10,6 @@
 <title>자유게시판 수정하기</title>
 <!--  엑시콘사용 : 다운로드받은 폴더를 넣고 CSS파일을 읽는다. -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -130,7 +129,7 @@
 <style type="text/css">
 	* { font-size: 10pt; }
 	table#main_content{width: 80%; margin: auto;}
-	th {border: 1px solid gray; background-color: silver;padding: 5px; text-align: center;}
+	th {border: 1px solid gray; background-color: pink; padding: 5px; text-align: center;}
 	td {border: 1px solid gray; padding: 5px;}
 	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt;}
 	td.info {border:none; padding: 5px; text-align: right; }
@@ -165,7 +164,7 @@
 			<tr>
 				<th>제목</th>
 				<td colspan="3"> 
-					<input type="text" id="subject" name="subject" size="110" value="${fv.subject }" />
+					<input type="text" id="subject" name="subject" size="123" value="${fv.subject }" />
 				</td>
 			</tr>
 			<tr>
@@ -190,9 +189,9 @@
 					</c:forEach>
 				</c:if>					 
 					<hr />
-					<input type="button" value=" + " class="btn btn-outline-success btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
-					<input type="button" value=" - " class="btn btn-outline-success btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
-					<span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span>
+					<input type="button" value=" + " class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
+					<input type="button" value=" - " class="btn btn-outline-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
+					<!-- <span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span> -->
 					<br />
 					<div id="fileBox">
 						<div id="fileItem1" class="fileItem"> <input type="file" name="upfile"/></div>
@@ -201,7 +200,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" class="info">
-					<input type="submit" value=" 수정하기 " class="btn btn-outline-success btn-sm" />
+					<input type="submit" value=" 수정하기 " class="btn btn-outline-primary btn-sm" />
 					<input type="button" value=" 돌아가기 " class="btn btn-outline-success btn-sm" onclick="goBack()"/>
 				</td>
 			</tr>
