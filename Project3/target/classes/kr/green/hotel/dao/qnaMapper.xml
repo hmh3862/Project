@@ -31,13 +31,12 @@
  			rnum >= #{startNo}
  			]]>
  	</select>
- 	
  	<!-- 4. 저장하기 -->
  	<insert id="insert" parameterType="qnaVO">
  		insert into	qna 
  			(idx, name, password, subject, content, regDate, ip) 
  		values 
- 			(notice_idx_seq.nextval, #{name}, #{password}, #{subject}, #{content}, SYSDATE, #{ip})
+ 			(qna_idx_seq.nextval, #{name}, #{password}, #{subject}, #{content}, SYSDATE, #{ip})
  	</insert>
  	<!-- 5. 수정하기 -->
  	<update id="update" parameterType="qnaVO">
@@ -48,15 +47,12 @@
  		where
  			idx = #{idx}
  	</update>
- 	
  	<!-- 6. 삭제하기 -->
  	<delete id="delete" parameterType="int">
  		delete from qna where idx = #{idx }
  	</delete>
- 	
  	<!-- 7. 현재 저장한 idx값 알아내기 -->
  	<select id="selectSeq" resultType="int">
  		select max(idx) from qna
  	</select>
-  	
 </mapper>

@@ -31,7 +31,6 @@
  			rnum >= #{startNo}
  			]]>
  	</select>
- 	
  	<!-- 4. 저장하기 -->
  	<insert id="insert" parameterType="noticeVO">
  		insert into	notice 
@@ -48,15 +47,12 @@
  		where
  			idx = #{idx}
  	</update>
- 	
  	<!-- 6. 삭제하기 -->
  	<delete id="delete" parameterType="int">
  		delete from notice where idx = #{idx }
  	</delete>
- 	
  	<!-- 7. 현재 저장한 idx값 알아내기 -->
  	<select id="selectSeq" resultType="int">
  		select max(idx) from notice
  	</select>
-  	
 </mapper>
