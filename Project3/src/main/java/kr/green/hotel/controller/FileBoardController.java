@@ -290,5 +290,4 @@ public class FileBoardController {
 		log.info("{}의 imageUpload 리턴 : {}",this.getClass().getName(),filePath);
 		return filePath;
 	}
-	
 }
