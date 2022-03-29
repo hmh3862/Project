@@ -28,7 +28,7 @@
 			<article class="box post post-excerpt">
 				<header>
 					<h2><a href="#">Welcome to Healing Stay</a></h2>
-					 <p>경기도 호텔 검색 및 예약</p>
+					 <p>경기도 소재 호텔 조회 및 예약</p>
 				</header>
 			</article>
 			
@@ -36,11 +36,13 @@
 			<section class="box search">
 				<form method="post" action="#">
 					<input type="text" class="text" name="search" placeholder="어디로 떠나시나요?" />
-					<input type="text" class="text" name="search" placeholder="체크인" />
-					<input type="text" class="text" name="search" placeholder="체크아웃" />
-					<input type="text" class="text" name="search" placeholder="인원" />
-					<input type="text" class="text" name="search" placeholder="검색" />
 				</form>
+				<br />
+					<input type="text" class="text" name="checkIn" placeholder="체크인" />
+					<input type="text" class="text" name="checkOut" placeholder="체크아웃" />
+					<input type="text" class="text" name="member" placeholder="인원" />
+					<!-- <input type="text" class="text" name="search" placeholder="조회" /> -->
+					<button type="button" class="btn btn-outline-primary btn-sm">조회</button>
 			<!-- 
 			<a href="checkIn">체크인</a>
 			<a href="checkOut">체크아웃</a>

@@ -31,7 +31,7 @@
 						</c:if>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="username">
-							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:green;"></i>
+							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
 							</label> <input type="text" class="form-control"
 								id="username" name="username" placeholder="사용자 이름 입력" required>
 						</div>
@@ -47,7 +47,7 @@
 
 						<div class="form-actions">
 							<input type="submit"
-								class="btn btn-block btn-primary btn-default" value="아이디 찾기">
+								class="btn btn-block btn-success btn-default" value="아이디 찾기">
 						</div>
 						<div style="text-align: center;margin: 15px;">
 							[<a href="${pageContext.request.contextPath }/insertForm">회원가입</a>] 

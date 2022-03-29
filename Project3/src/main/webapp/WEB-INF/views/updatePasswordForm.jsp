@@ -31,7 +31,7 @@
 						</c:if>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="userid">
-							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:green;"></i>
+							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
 							</label> <input type="text" class="form-control"
 								id="userid" name="userid" placeholder="사용자 아이디 입력" required value="${mvo.userid }">
 						</div>
@@ -53,7 +53,7 @@
 
 						<div class="form-actions">
 							<input type="submit"
-								class="btn btn-block btn-primary btn-default" value="비밀번호 변경하기">
+								class="btn btn-block btn-warning btn-default" value="비밀번호 변경하기">
 						</div>
 						<div style="text-align: center;margin: 15px;">
 							[<a href="${pageContext.request.contextPath }">홈으로</a>]

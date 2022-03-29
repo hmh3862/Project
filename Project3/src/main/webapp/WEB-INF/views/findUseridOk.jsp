@@ -29,7 +29,7 @@
 					</div>					
 					<div style="margin: 15px;text-align: center;">
 						<input type="button" onclick="location.href='${pageContext.request.contextPath}/login'"
-							class="btn btn-success btn-default" value="로그인하기">
+							class="btn btn-warning btn-default" value="로그인하기">
 						<input type="button" onclick="location.href='${pageContext.request.contextPath}'"
 							class="btn btn-success btn-default" value="홈으로가기">
 					</div>

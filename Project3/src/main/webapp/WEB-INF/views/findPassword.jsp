@@ -5,20 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/3c36eed32b.js" crossorigin="anonymous"></script>
-	
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/app.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
 </head>
-
 <body>
 	<div id="mainWrapper">
 		<div class="login-container">
@@ -31,7 +24,7 @@
 						</c:if>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="userid">
-							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:green;"></i>
+							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
 							</label> <input type="text" class="form-control"
 								id="userid" name="userid" placeholder="사용자 아이디 입력" required>
 						</div>
@@ -47,7 +40,7 @@
 
 						<div class="form-actions">
 							<input type="submit"
-								class="btn btn-block btn-primary btn-default" value="비밀번호 찾기">
+								class="btn btn-block btn-success btn-default" value="비밀번호 찾기">
 						</div>
 						<div style="text-align: center;margin: 15px;">
 							[<a href="${pageContext.request.contextPath }/login">로그인하기</a>] 
@@ -59,6 +52,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
