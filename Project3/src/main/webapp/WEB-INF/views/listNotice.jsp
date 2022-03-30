@@ -125,10 +125,10 @@
 		</c:if>
 		<tr>
 			<td class="info" colspan="5">
-				<!-- <button type="button" class="btn btn-outline-success btn-sm" 
-			        onclick="goWrite()">글쓰기</button> -->
-				<button type="button" class="btn btn-outline-success btn-sm" 
-			        onclick='SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
+				<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
+					<button type="button" class="btn btn-outline-success btn-sm" 
+			        	onclick='SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
+		    	</c:if>
 			</td>
 		</tr>
 	</table>	

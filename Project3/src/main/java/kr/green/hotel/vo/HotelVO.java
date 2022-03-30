@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class HotelVO {
-	private String city;
-	private String name;
-	private String phone;
-	private String zipcode;
-	private String address;
+	private String SIGUN_NM;
+	private String BIZPLC_NM;
+	private String LOCPLC_FACLT_TELNO_DTLS;
+	private String ROADNM_ZIPNO;
+	private String REFINE_ROADNM_ADDR;
 }
