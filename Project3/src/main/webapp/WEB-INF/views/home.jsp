@@ -38,11 +38,21 @@
 					<input type="text" class="text" name="search" placeholder="어디로 떠나시나요?" />
 				</form>
 				<br />
-					<input type="text" class="text" name="checkIn" placeholder="체크인" />
-					<input type="text" class="text" name="checkOut" placeholder="체크아웃" />
-					<input type="text" class="text" name="member" placeholder="인원" />
-					<!-- <input type="text" class="text" name="search" placeholder="조회" /> -->
-					<button type="button" class="btn btn-outline-primary btn-sm">조회</button>
+				<div>
+					<!-- <img src="./resources/images/ggmap.png" /> -->
+					<!-- <img src="./resources/images/ggmap2.png" /> -->
+					<img src="./resources/images/ggmap3.png" />
+					<!-- <img src="./resources/images/ggmap3.png" /> -->
+				</div>
+				<!-- 
+				<input type="text" class="text" name="checkIn" placeholder="체크인" />
+				<input type="text" class="text" name="checkOut" placeholder="체크아웃" />
+				<input type="text" class="text" name="member" placeholder="인원" />
+				 -->
+				<!-- <input type="text" class="text" name="search" placeholder="조회" /> -->
+				<!-- 
+				<button type="button" class="btn btn-outline-primary btn-sm">조회</button>
+				 -->
 			<!-- 
 			<a href="checkIn">체크인</a>
 			<a href="checkOut">체크아웃</a>
