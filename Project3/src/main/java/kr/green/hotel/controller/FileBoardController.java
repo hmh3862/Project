@@ -27,6 +27,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import kr.green.hotel.service.FileBoardService;
 import kr.green.hotel.vo.CommVO;
+import kr.green.hotel.vo.CommentVO;
 import kr.green.hotel.vo.FileBoardFileVO;
 import kr.green.hotel.vo.FileBoardVO;
 import kr.green.hotel.vo.PagingVO;
@@ -72,6 +73,7 @@ public class FileBoardController {
 	public String insertOkPost(
 			@ModelAttribute CommVO commVO,
 			@ModelAttribute FileBoardVO fileBoardVO, 
+			@ModelAttribute CommentVO commentVO,
 			MultipartHttpServletRequest request, Model model,
 			RedirectAttributes redirectAttributes) { // redirect시 POST전송을 위해 RedirectAttributes 변수 추가
 		// 일단 VO로 받고
@@ -138,6 +140,7 @@ public class FileBoardController {
 		}
 		
 		FileBoardVO fileBoardVO = fileBoardService.selectByIdx(commVO.getIdx());
+
 		model.addAttribute("fv", fileBoardVO);
 		model.addAttribute("cv", commVO);
 		return "view";
@@ -256,7 +259,6 @@ public class FileBoardController {
 		return "redirect:/board/list";
 	}
 
-
 	@RequestMapping(value = "/board/download")
 	public ModelAndView download(@RequestParam HashMap<Object, Object> params, ModelAndView mv) {
 		String ofileName = (String) params.get("of"); // 원본이름
@@ -289,5 +291,44 @@ public class FileBoardController {
 		}
 		log.info("{}의 imageUpload 리턴 : {}",this.getClass().getName(),filePath);
 		return filePath;
+	}
+	
+	// 댓글 내용보기
+	@RequestMapping(value = "/board/commentList")
+	@ResponseBody
+	public List<CommentVO> commentList(@RequestParam int ref) {
+		log.info("{}의 commentList 호출 : {}",this.getClass().getName(), ref);
+		List<CommentVO> list = fileBoardService.selectList(ref);
+		
+		log.info("{}의 commentList 리턴 : {}",this.getClass().getName(), list);
+		return list;
+	}
+	
+	// 댓글 저장하기 
+	@RequestMapping(value = "/board/commentInsert")
+	@ResponseBody
+	public String commentInsert(@ModelAttribute CommentVO commentVO, HttpServletRequest request) {
+		commentVO.setIp(request.getRemoteAddr());
+		log.info("{}의 commentInsert 호출 : {}",this.getClass().getName(),commentVO);
+		fileBoardService.insert(commentVO);
+		return null;
+	}
+	
+	// 댓글 수정하기 
+	@RequestMapping(value = "/board/commentUpdate")
+	@ResponseBody
+	public String commentUpdate(@ModelAttribute CommentVO commentVO, HttpServletRequest request) {
+		commentVO.setIp(request.getRemoteAddr());
+		log.info("{}의 commentUpdate 호출 : {}",this.getClass().getName(),commentVO);
+		fileBoardService.update(commentVO);
+		return null;
+	}
+ 
+	// 댓글 삭제하기 
+	@RequestMapping(value = "/board/commentDelete")
+	@ResponseBody
+	public void commentDelete(@RequestParam int idx) {
+		log.info("{}의 commentDelete 호출 : {}",this.getClass().getName(),idx);
+		fileBoardService.deleteByIdx(idx);
 	}
 }

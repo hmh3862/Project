@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.green.hotel.dao.CommentDAO;
 import kr.green.hotel.dao.FileBoardDAO;
 import kr.green.hotel.dao.FileBoardFileDAO;
 import kr.green.hotel.vo.CommVO;
+import kr.green.hotel.vo.CommentVO;
 import kr.green.hotel.vo.FileBoardFileVO;
 import kr.green.hotel.vo.FileBoardVO;
 import kr.green.hotel.vo.PagingVO;
@@ -26,6 +28,9 @@ public class FileBoardServiceImpl implements FileBoardService {
 	private FileBoardDAO fileBoardDAO;
 	@Autowired
 	private FileBoardFileDAO fileBoardFileDAO;
+	@Autowired
+	private CommentDAO commentDAO;
+	
 	
 	@Override
 	public PagingVO<FileBoardVO> selectList(CommVO commVO) {
@@ -48,6 +53,7 @@ public class FileBoardServiceImpl implements FileBoardService {
 					List<FileBoardFileVO> fileList =  fileBoardFileDAO.selectList(vo.getIdx());
 					// vo에 넣는다.
 					vo.setFileList(fileList);
+					vo.setCommentCount(commentDAO.selectCount(vo.getIdx()));
 				}
 			}
 			// 완성된 리스트를 페이징 객체에 넣는다.
@@ -62,10 +68,11 @@ public class FileBoardServiceImpl implements FileBoardService {
 	public FileBoardVO selectByIdx(int idx) {
 		log.info("{}의 selectByIdx 호출 : {}", this.getClass().getName(), idx);
 		FileBoardVO fileBoardVO = fileBoardDAO.selectByIdx(idx); // 글 1개를 가져온다.
-		// 그 글에 해당하는 첨부파일의 정보를 가져온다.
+		// 그 글에 해당하는 첨부파일과 댓글의 정보를 가져온다.
 		if(fileBoardVO!= null) {
 			List<FileBoardFileVO> list = fileBoardFileDAO.selectList(idx);
 			fileBoardVO.setFileList(list);
+			fileBoardVO.setCommentList(commentDAO.selectList(fileBoardVO.getIdx()));
 		}
 		log.info("{}의 selectByIdx 리턴 : {}", this.getClass().getName(), fileBoardVO);
 		return fileBoardVO;
@@ -144,5 +151,51 @@ public class FileBoardServiceImpl implements FileBoardService {
 				}
 			}
 		}
+	}
+	@Override
+	public void insert(CommentVO commentVO) {
+		log.debug("insert 호출 : " + commentVO);
+		if(commentVO!=null) {
+			commentDAO.insert(commentVO);
+		}
+	}
+	@Override
+	public void update(CommentVO commentVO) {
+		log.debug("update 호출 : " + commentVO);
+		if(commentVO!=null) {
+			CommentVO dbVO = commentDAO.selectByIdx(commentVO.getIdx());
+			if(dbVO!=null && dbVO.getPassword().equals(commentVO.getPassword())) {
+				commentDAO.update(commentVO);
+			}
+		}
+	}
+	@Override
+	public void deleteByIdx(int idx) {
+		log.debug("deleteByIdx 호출 : " + idx);
+			commentDAO.deleteByIdx(idx);
+	}
+	@Override
+	public void deleteByRef(int ref) {
+		log.debug("deleteByRef 호출 : " + ref);
+			commentDAO.deleteByRef(ref);
+	}
+	@Override
+	public List<CommentVO> selectList(int ref) {
+		log.debug("selectList 호출 : " + ref);
+		List<CommentVO> commentList = commentDAO.selectList(ref);
+		if(commentList!=null && commentList.size()>0) {
+			for(CommentVO vo : commentList) {
+			}
+		}
+		log.debug("selectList 리턴 : " + commentList);
+		return commentList;
+	}
+	@Override
+	public int selectCount(int ref) {
+		log.debug("selectCount 호출 : " + ref);
+		int count = commentDAO.selectCount(ref);
+		
+		log.debug("selectCount 리턴 : " + count);
+		return count;
 	}
 }

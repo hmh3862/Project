@@ -21,6 +21,9 @@
 	$(function(){
 		
 	});
+	function goHome(){
+		SendPost("${pageContext.request.contextPath }");
+	}
 </script>
 <style type="text/css">
 	* { font-size: 10pt; }
@@ -76,11 +79,22 @@
 			</tr>
 		</c:if>
 		<c:if test="${not empty pv.list }">
+			<%-- 시작 번호 계산 --%>
+			<c:set var="no" value="${pv.totalCount - (pv.currentPage-1)*pv.pageSize }"/>
 			<c:forEach var="vo" items="${pv.list }" varStatus="vs">
 				<tr align="center">
-					<td>${vo.idx }</td>
+					<td>
+						${no }
+						<c:set var="no" value="${no - 1 }"/>
+					</td>	
 					<td align="left" >
-						<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/view",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'><c:out value="${vo.subject }"></c:out></a>
+						<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/view",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'>
+							<c:out value="${vo.subject }"></c:out>
+						</a>
+						<%-- 댓글의 개수를 출력해 주자 --%>
+						<c:if test="${vo.commentCount>0 }">
+							- [${vo.commentCount }]
+						</c:if>
 						<%-- 오늘 저장한 글이면 new 아이콘을 달아보자  --%>		
 						<jsp:useBean id="today" scope="request" class="java.util.Date"></jsp:useBean>				
 						<fmt:formatDate value="${today }" pattern="yyyyMMdd" var="day"/> 
@@ -117,11 +131,9 @@
 		</c:if>
 		<tr>
 			<td class="info" colspan="5">
-				<button type="button" class="btn btn-outline-success btn-sm" 
+				<button type="button" class="btn btn-success btn-sm" 
 			        onclick='SendPost("${pageContext.request.contextPath }/board/insertBoard",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
-				<!-- <button type="button" class="btn btn-outline-success btn-sm" 
-			        onclick='SendPost("${pageContext.request.contextPath },"","post")'>홈으로</button>  -->
-				<!-- <a href="${pageContext.request.contextPath }">홈으로</a> -->
+			    <input type="button" value="홈으로" class="btn btn-primary btn-sm" onclick="goHome()"/>
 			</td>
 		</tr>
 	</table>	

@@ -33,4 +33,8 @@ public class NoticeVO {
 	private String 	ip;
 	// 첨부파일의 정보를 저장할 필드 추가
 	private List<NoticeFileVO> fileList;
+	
+	// 댓글의 개수
+	private int noticeCommentCount;
+	private List<NoticeCommentVO> noticeCommentList;
 }

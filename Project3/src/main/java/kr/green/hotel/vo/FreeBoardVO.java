@@ -34,4 +34,7 @@ public class FreeBoardVO {
 	// 첨부파일의 정보를 저장할 필드 추가
 	private List<FreeBoardFileVO> fileList;
 	
+	// 댓글의 개수
+	private int freeCommentCount;
+	private List<FreeCommentVO> freeCommentList;
 }

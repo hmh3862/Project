@@ -27,6 +27,8 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import kr.green.hotel.service.NoticeService;
 import kr.green.hotel.vo.CommVO;
+import kr.green.hotel.vo.FreeCommentVO;
+import kr.green.hotel.vo.NoticeCommentVO;
 import kr.green.hotel.vo.NoticeFileVO;
 import kr.green.hotel.vo.NoticeVO;
 import kr.green.hotel.vo.PagingVO;
@@ -291,4 +293,42 @@ public class NoticeController {
 		return filePath;
 	}
 	
+	// 댓글 내용보기
+	@RequestMapping(value = "/board/noticeCommentList")
+	@ResponseBody
+	public List<NoticeCommentVO> noticeCommentList(@RequestParam int ref) {
+		log.info("{}의 noticeCommentList 호출 : {}",this.getClass().getName(), ref);
+		List<NoticeCommentVO> list = noticeService.selectList(ref);
+		
+		log.info("{}의 noticeCommentList 리턴 : {}",this.getClass().getName(), list);
+		return list;
+	}
+	
+	// 댓글 저장하기 
+	@RequestMapping(value = "/board/noticeCommentInsert")
+	@ResponseBody
+	public String noticeCommentInsert(@ModelAttribute NoticeCommentVO noticeCommentVO, HttpServletRequest request) {
+		noticeCommentVO.setIp(request.getRemoteAddr());
+		log.info("{}의 noticeCommentInsert 호출 : {}",this.getClass().getName(),noticeCommentVO);
+		noticeService.insert(noticeCommentVO);
+		return null;
+	}
+	
+	// 댓글 수정하기 
+	@RequestMapping(value = "/board/noticeCommentUpdate")
+	@ResponseBody
+	public String noticeCommentUpdate(@ModelAttribute NoticeCommentVO noticeCommentVO, HttpServletRequest request) {
+		noticeCommentVO.setIp(request.getRemoteAddr());
+		log.info("{}의 noticeCommentUpdate 호출 : {}",this.getClass().getName(),noticeCommentVO);
+		noticeService.update(noticeCommentVO);
+		return null;
+	}
+ 
+	// 댓글 삭제하기 
+	@RequestMapping(value = "/board/noticeCommentDelete")
+	@ResponseBody
+	public void noticeCommentDelete(@RequestParam int idx) {
+		log.info("{}의 noticeCommentDelete 호출 : {}",this.getClass().getName(),idx);
+		noticeService.deleteByIdx(idx);
+	}
 }

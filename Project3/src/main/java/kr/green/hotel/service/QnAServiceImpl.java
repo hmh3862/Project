@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.green.hotel.dao.QnACommentDAO;
 import kr.green.hotel.dao.QnADAO;
 import kr.green.hotel.dao.QnAFileDAO;
 import kr.green.hotel.vo.CommVO;
-import kr.green.hotel.vo.FileBoardFileVO;
+import kr.green.hotel.vo.CommentVO;
 import kr.green.hotel.vo.PagingVO;
+import kr.green.hotel.vo.QnACommentVO;
 import kr.green.hotel.vo.QnAFileVO;
 import kr.green.hotel.vo.QnAVO;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,8 @@ public class QnAServiceImpl implements QnAService {
 	private QnADAO qnaDAO;
 	@Autowired
 	private QnAFileDAO qnaFileDAO;
+	@Autowired
+	private QnACommentDAO qnaCommentDAO;
 	
 	@Override
 	public PagingVO<QnAVO> selectList(CommVO commVO) {
@@ -49,6 +53,7 @@ public class QnAServiceImpl implements QnAService {
 					List<QnAFileVO> fileList =  qnaFileDAO.selectList(vo.getIdx());
 					// vo에 넣는다.
 					vo.setFileList(fileList);
+					vo.setQnaCommentCount(qnaCommentDAO.selectCount(vo.getIdx()));
 				}
 			}
 			// 완성된 리스트를 페이징 객체에 넣는다.
@@ -145,5 +150,51 @@ public class QnAServiceImpl implements QnAService {
 				}
 			}
 		}
+	}
+	@Override
+	public void insert(QnACommentVO qnaCommentVO) {
+		log.debug("insert 호출 : " + qnaCommentVO);
+		if(qnaCommentVO!=null) {
+			qnaCommentDAO.insert(qnaCommentVO);
+		}
+	}
+	@Override
+	public void update(QnACommentVO qnaCommentVO) {
+		log.debug("update 호출 : " + qnaCommentVO);
+		if(qnaCommentVO!=null) {
+			QnACommentVO dbVO = qnaCommentDAO.selectByIdx(qnaCommentVO.getIdx());
+			if(dbVO!=null && dbVO.getPassword().equals(qnaCommentVO.getPassword())) {
+				qnaCommentDAO.update(qnaCommentVO);
+			}
+		}
+	}
+	@Override
+	public void deleteByIdx(int idx) {
+		log.debug("deleteByIdx 호출 : " + idx);
+		qnaCommentDAO.deleteByIdx(idx);
+	}
+	@Override
+	public void deleteByRef(int ref) {
+		log.debug("deleteByRef 호출 : " + ref);
+		qnaCommentDAO.deleteByRef(ref);
+	}
+	@Override
+	public List<QnACommentVO> selectList(int ref) {
+		log.debug("selectList 호출 : " + ref);
+		List<QnACommentVO> qnaCommentList = qnaCommentDAO.selectList(ref);
+		if(qnaCommentList!=null && qnaCommentList.size()>0) {
+			for(QnACommentVO vo : qnaCommentList) {
+			}
+		}
+		log.debug("selectList 리턴 : " + qnaCommentList);
+		return qnaCommentList;
+	}
+	@Override
+	public int selectCount(int ref) {
+		log.debug("selectCount 호출 : " + ref);
+		int count = qnaCommentDAO.selectCount(ref);
+		
+		log.debug("selectCount 리턴 : " + count);
+		return count;
 	}
 }

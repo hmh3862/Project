@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.green.hotel.dao.NoticeCommentDAO;
 import kr.green.hotel.dao.NoticeDAO;
 import kr.green.hotel.dao.NoticeFileDAO;
 import kr.green.hotel.vo.CommVO;
+import kr.green.hotel.vo.CommentVO;
+import kr.green.hotel.vo.NoticeCommentVO;
 import kr.green.hotel.vo.NoticeFileVO;
 import kr.green.hotel.vo.NoticeVO;
 import kr.green.hotel.vo.PagingVO;
@@ -26,6 +29,8 @@ public class NoticeServiceImpl implements NoticeService {
 	private NoticeDAO noticeDAO;
 	@Autowired
 	private NoticeFileDAO noticeFileDAO;
+	@Autowired
+	private NoticeCommentDAO noticeCommentDAO;
 	
 	@Override
 	public PagingVO<NoticeVO> selectList(CommVO commVO) {
@@ -48,6 +53,7 @@ public class NoticeServiceImpl implements NoticeService {
 					List<NoticeFileVO> fileList =  noticeFileDAO.selectList(vo.getIdx());
 					// vo에 넣는다.
 					vo.setFileList(fileList);
+					vo.setNoticeCommentCount(noticeCommentDAO.selectCount(vo.getIdx()));
 				}
 			}
 			// 완성된 리스트를 페이징 객체에 넣는다.
@@ -144,5 +150,51 @@ public class NoticeServiceImpl implements NoticeService {
 				}
 			}
 		}
+	}
+	@Override
+	public void insert(NoticeCommentVO noticeCommentVO) {
+		log.debug("insert 호출 : " + noticeCommentVO);
+		if(noticeCommentVO!=null) {
+			noticeCommentDAO.insert(noticeCommentVO);
+		}
+	}
+	@Override
+	public void update(NoticeCommentVO noticeCommentVO) {
+		log.debug("update 호출 : " + noticeCommentVO);
+		if(noticeCommentVO!=null) {
+			NoticeCommentVO dbVO = noticeCommentDAO.selectByIdx(noticeCommentVO.getIdx());
+			if(dbVO!=null && dbVO.getPassword().equals(noticeCommentVO.getPassword())) {
+				noticeCommentDAO.update(noticeCommentVO);
+			}
+		}
+	}
+	@Override
+	public void deleteByIdx(int idx) {
+		log.debug("deleteByIdx 호출 : " + idx);
+		noticeCommentDAO.deleteByIdx(idx);
+	}
+	@Override
+	public void deleteByRef(int ref) {
+		log.debug("deleteByRef 호출 : " + ref);
+		noticeCommentDAO.deleteByRef(ref);
+	}
+	@Override
+	public List<NoticeCommentVO> selectList(int ref) {
+		log.debug("selectList 호출 : " + ref);
+		List<NoticeCommentVO> commentList = noticeCommentDAO.selectList(ref);
+		if(commentList!=null && commentList.size()>0) {
+			for(NoticeCommentVO vo : commentList) {
+			}
+		}
+		log.debug("selectList 리턴 : " + commentList);
+		return commentList;
+	}
+	@Override
+	public int selectCount(int ref) {
+		log.debug("selectCount 호출 : " + ref);
+		int count = noticeCommentDAO.selectCount(ref);
+		
+		log.debug("selectCount 리턴 : " + count);
+		return count;
 	}
 }

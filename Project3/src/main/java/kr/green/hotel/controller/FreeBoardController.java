@@ -27,8 +27,10 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import kr.green.hotel.service.FreeBoardService;
 import kr.green.hotel.vo.CommVO;
+import kr.green.hotel.vo.CommentVO;
 import kr.green.hotel.vo.FreeBoardFileVO;
 import kr.green.hotel.vo.FreeBoardVO;
+import kr.green.hotel.vo.FreeCommentVO;
 import kr.green.hotel.vo.PagingVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -291,4 +293,42 @@ public class FreeBoardController {
 		return filePath;
 	}
 	
+	// 댓글 내용보기
+	@RequestMapping(value = "/board/freeCommentList")
+	@ResponseBody
+	public List<FreeCommentVO> freeCommentList(@RequestParam int ref) {
+		log.info("{}의 freeCommentList 호출 : {}",this.getClass().getName(), ref);
+		List<FreeCommentVO> list = freeBoardService.selectList(ref);
+		
+		log.info("{}의 freeCommentList 리턴 : {}",this.getClass().getName(), list);
+		return list;
+	}
+	
+	// 댓글 저장하기 
+	@RequestMapping(value = "/board/freeCommentInsert")
+	@ResponseBody
+	public String freeCommentInsert(@ModelAttribute FreeCommentVO freeCommentVO, HttpServletRequest request) {
+		freeCommentVO.setIp(request.getRemoteAddr());
+		log.info("{}의 freeCommentInsert 호출 : {}",this.getClass().getName(),freeCommentVO);
+		freeBoardService.insert(freeCommentVO);
+		return null;
+	}
+	
+	// 댓글 수정하기 
+	@RequestMapping(value = "/board/freeCommentUpdate")
+	@ResponseBody
+	public String freeCommentUpdate(@ModelAttribute FreeCommentVO freeCommentVO, HttpServletRequest request) {
+		freeCommentVO.setIp(request.getRemoteAddr());
+		log.info("{}의 freeCommentUpdate 호출 : {}",this.getClass().getName(),freeCommentVO);
+		freeBoardService.update(freeCommentVO);
+		return null;
+	}
+ 
+	// 댓글 삭제하기 
+	@RequestMapping(value = "/board/freeCommentDelete")
+	@ResponseBody
+	public void freeCommentDelete(@RequestParam int idx) {
+		log.info("{}의 freeCommentDelete 호출 : {}",this.getClass().getName(),idx);
+		freeBoardService.deleteByIdx(idx);
+	}
 }

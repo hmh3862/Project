@@ -11,10 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.green.hotel.dao.FreeBoardDAO;
 import kr.green.hotel.dao.FreeBoardFileDAO;
+import kr.green.hotel.dao.FreeCommentDAO;
 import kr.green.hotel.vo.CommVO;
-import kr.green.hotel.vo.FileBoardVO;
+import kr.green.hotel.vo.CommentVO;
 import kr.green.hotel.vo.FreeBoardFileVO;
 import kr.green.hotel.vo.FreeBoardVO;
+import kr.green.hotel.vo.FreeCommentVO;
 import kr.green.hotel.vo.PagingVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,6 +29,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	private FreeBoardDAO freeBoardDAO;
 	@Autowired
 	private FreeBoardFileDAO freeBoardFileDAO;
+	@Autowired
+	private FreeCommentDAO freeCommentDAO;
 	
 	@Override
 	public PagingVO<FreeBoardVO> selectList(CommVO commVO) {
@@ -49,6 +53,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 					List<FreeBoardFileVO> fileList =  freeBoardFileDAO.selectList(vo.getIdx());
 					// vo에 넣는다.
 					vo.setFileList(fileList);
+					vo.setFreeCommentCount(freeCommentDAO.selectCount(vo.getIdx()));
 				}
 			}
 			// 완성된 리스트를 페이징 객체에 넣는다.
@@ -145,5 +150,51 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 				}
 			}
 		}
+	}
+	@Override
+	public void insert(FreeCommentVO freeCommentVO) {
+		log.debug("insert 호출 : " + freeCommentVO);
+		if(freeCommentVO!=null) {
+			freeCommentDAO.insert(freeCommentVO);
+		}
+	}
+	@Override
+	public void update(FreeCommentVO freeCommentVO) {
+		log.debug("update 호출 : " + freeCommentVO);
+		if(freeCommentVO!=null) {
+			FreeCommentVO dbVO = freeCommentDAO.selectByIdx(freeCommentVO.getIdx());
+			if(dbVO!=null && dbVO.getPassword().equals(freeCommentVO.getPassword())) {
+				freeCommentDAO.update(freeCommentVO);
+			}
+		}
+	}
+	@Override
+	public void deleteByIdx(int idx) {
+		log.debug("deleteByIdx 호출 : " + idx);
+		freeCommentDAO.deleteByIdx(idx);
+	}
+	@Override
+	public void deleteByRef(int ref) {
+		log.debug("deleteByRef 호출 : " + ref);
+		freeCommentDAO.deleteByRef(ref);
+	}
+	@Override
+	public List<FreeCommentVO> selectList(int ref) {
+		log.debug("selectList 호출 : " + ref);
+		List<FreeCommentVO> freeCommentList = freeCommentDAO.selectList(ref);
+		if(freeCommentList!=null && freeCommentList.size()>0) {
+			for(FreeCommentVO vo : freeCommentList) {
+			}
+		}
+		log.debug("selectList 리턴 : " + freeCommentList);
+		return freeCommentList;
+	}
+	@Override
+	public int selectCount(int ref) {
+		log.debug("selectCount 호출 : " + ref);
+		int count = freeCommentDAO.selectCount(ref);
+		
+		log.debug("selectCount 리턴 : " + count);
+		return count;
 	}
 }

@@ -34,4 +34,7 @@ public class FileBoardVO {
 	// 첨부파일의 정보를 저장할 필드 추가
 	private List<FileBoardFileVO> fileList;
 	
+	// 댓글의 개수
+	private int commentCount;
+	private List<CommentVO> commentList;
 }

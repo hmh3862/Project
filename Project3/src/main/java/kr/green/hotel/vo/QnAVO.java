@@ -33,4 +33,8 @@ public class QnAVO {
 	private String 	ip;
 	// 첨부파일의 정보를 저장할 필드 추가
 	private List<QnAFileVO> fileList;
+	
+	// 댓글의 개수
+	private int qnaCommentCount;
+	private List<QnAVO> qnaCommentList;
 }

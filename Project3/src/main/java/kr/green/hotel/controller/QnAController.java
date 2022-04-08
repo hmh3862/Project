@@ -27,8 +27,9 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import kr.green.hotel.service.QnAService;
 import kr.green.hotel.vo.CommVO;
-import kr.green.hotel.vo.FreeBoardFileVO;
+import kr.green.hotel.vo.CommentVO;
 import kr.green.hotel.vo.PagingVO;
+import kr.green.hotel.vo.QnACommentVO;
 import kr.green.hotel.vo.QnAFileVO;
 import kr.green.hotel.vo.QnAVO;
 import lombok.extern.slf4j.Slf4j;
@@ -291,5 +292,42 @@ public class QnAController {
 		log.info("{}의 imageUpload 리턴 : {}",this.getClass().getName(),filePath);
 		return filePath;
 	}
+	// 댓글 내용보기
+	@RequestMapping(value = "/board/qnaCommentList")
+	@ResponseBody
+	public List<QnACommentVO> qnaCommentList(@RequestParam int ref) {
+		log.info("{}의 qnaCommentList 호출 : {}",this.getClass().getName(), ref);
+		List<QnACommentVO> list = qnaService.selectList(ref);
+		
+		log.info("{}의 qnaCommentList 리턴 : {}",this.getClass().getName(), list);
+		return list;
+	}
 	
+	// 댓글 저장하기 
+	@RequestMapping(value = "/board/qnaCommentInsert")
+	@ResponseBody
+	public String qnaCommentInsert(@ModelAttribute QnACommentVO qnaCommentVO, HttpServletRequest request) {
+		qnaCommentVO.setIp(request.getRemoteAddr());
+		log.info("{}의 qnaCommentInsert 호출 : {}",this.getClass().getName(),qnaCommentVO);
+		qnaService.insert(qnaCommentVO);
+		return null;
+	}
+	
+	// 댓글 수정하기 
+	@RequestMapping(value = "/board/qnaCommentUpdate")
+	@ResponseBody
+	public String qnaCommentUpdate(@ModelAttribute QnACommentVO qnaCommentVO, HttpServletRequest request) {
+		qnaCommentVO.setIp(request.getRemoteAddr());
+		log.info("{}의 qnaCommentUpdate 호출 : {}",this.getClass().getName(),qnaCommentVO);
+		qnaService.update(qnaCommentVO);
+		return null;
+	}
+ 
+	// 댓글 삭제하기 
+	@RequestMapping(value = "/board/qnaCommentDelete")
+	@ResponseBody
+	public void qnaCommentDelete(@RequestParam int idx) {
+		log.info("{}의 qnaCommentDelete 호출 : {}",this.getClass().getName(),idx);
+		qnaService.deleteByIdx(idx);
+	}
 }

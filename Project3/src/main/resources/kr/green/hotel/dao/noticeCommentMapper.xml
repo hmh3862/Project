@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.hotel.dao.NoticeCommentDAO">
+ 	<!-- id: 메서드명 , parameterType : 인수, resultType : 리턴값 -->
+ 	<!-- 1. 지정 번호의 댓글이 몇개? -->
+ 	<select id="selectCount" resultType="int">
+ 		select count(*) from notice_comment where ref=#{ref }
+ 	</select>
+ 	<!-- 2. 지정 번호의 모든 댓글 얻기 -->
+ 	<select id="selectList" parameterType="int" resultType="noticeCommentVO">
+ 		select * from notice_comment where ref=#{ref } order by idx
+ 	</select>
+ 	<!-- 3. 댓글 저장 -->
+ 	<insert id="insert" parameterType="noticeCommentVO">
+ 		insert into	notice_comment 
+ 			(idx, ref, name, password, content, regDate, ip) 
+ 		values 
+ 			(comment_idx_seq.nextval, #{ref}, #{name}, #{password}, #{content}, SYSDATE, #{ip})
+ 	</insert>
+ 	<!-- 4. 댓글 수정 -->
+ 	<update id="update" parameterType="noticeCommentVO">
+ 		update 
+ 			notice_comment 
+ 		set
+ 			content=#{content}, regdate=SYSDATE, ip=#{ip}
+ 		where
+ 			idx = #{idx}
+ 	</update>
+ 	<!-- 5. 댓글 삭제 -->
+ 	<delete id="deleteByIdx" parameterType="int">
+ 		delete from notice_comment where idx = #{idx}
+ 	</delete>
+ 	<!-- 6. 지정 번호의 모든 댓글 삭제 -->
+ 	<delete id="deleteByRef" parameterType="int">
+ 		delete from notice_comment where ref=#{ref}
+ 	</delete>
+ 	<!-- 7. 지정 번호의 댓글 얻기 -->
+ 	<select id="selectByIdx" parameterType="int" resultType="noticeCommentVO">
+  		select * from notice_comment where idx=#{idx}
+  	</select>
+</mapper>
