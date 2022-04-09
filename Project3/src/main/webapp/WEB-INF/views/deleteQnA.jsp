@@ -120,8 +120,8 @@
 			</tr>
 			<tr>
 				<td colspan="4" class="info">
-					<input type="submit" value=" 삭제하기 " class="btn btn-outline-danger btn-sm" />
-					<input type="button" value=" 돌아가기 " class="btn btn-outline-success btn-sm" onclick="goBack()"/>
+					<input type="submit" value=" 삭제하기 " class="btn btn-danger btn-sm" />
+					<input type="button" value=" 돌아가기 " class="btn btn-success btn-sm" onclick="goBack()"/>
 				</td>
 			</tr>
 		</table>

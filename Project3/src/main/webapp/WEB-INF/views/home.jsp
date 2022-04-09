@@ -120,35 +120,34 @@
 				</p>
 			</div>
 			<!-- <img src="./resources/images/ggmap2.png" onclick="location.href='/hotel/hotelList'"/> -->
-
 		</div>
-			<!-- 여기에 리스트 출력 -->
-			<div style="width: 80%;">
-				<table class="table table-hover">
-					<c:if test="${not empty list}">
-						<thead>
-							<tr>
-								<th scope="col">시군명</th>
-								<th scope="col">사업장명</th>
-								<th scope="col">전화번호</th>
-								<th scope="col">우편번호</th>
-								<th scope="col">도로명 주소</th>
-							</tr>
-						</thead>
-						<c:forEach var="hotel" items="${list }">
-						<tbody>
-							<tr>
-								<td>${hotel.SIGUN_NM }</td>
-								<td>${hotel.BIZPLC_NM }</td>
-								<td>${hotel.LOCPLC_FACLT_TELNO_DTLS }</td>
-								<td>${hotel.ROADNM_ZIPNO }</td>
-								<td>${hotel.REFINE_ROADNM_ADDR }</td>
-							</tr>
-						</tbody>
-						</c:forEach>
-					</c:if>
-				</table>	
-			</div>
+		<!-- 여기에 리스트 출력 -->
+		<div style="width: 80%;">
+			<table class="table table-hover">
+				<c:if test="${not empty list}">
+					<thead>
+						<tr>
+							<th scope="col">시군명</th>
+							<th scope="col">사업장명</th>
+							<th scope="col">전화번호</th>
+							<th scope="col">우편번호</th>
+							<th scope="col">도로명 주소</th>
+						</tr>
+					</thead>
+					<c:forEach var="hotel" items="${list }">
+					<tbody>
+						<tr>
+							<td>${hotel.SIGUN_NM }</td>
+							<td>${hotel.BIZPLC_NM }</td>
+							<td>${hotel.LOCPLC_FACLT_TELNO_DTLS }</td>
+							<td>${hotel.ROADNM_ZIPNO }</td>
+							<td>${hotel.REFINE_ROADNM_ADDR }</td>
+						</tr>
+					</tbody>
+					</c:forEach>
+				</c:if>
+			</table>	
+		</div>
 	</div>
 	<!-- Sidebar -->
 	<div id="sidebar">

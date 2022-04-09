@@ -14,9 +14,9 @@
  	</select>
  	<!-- 3. 댓글 저장 -->
  	<insert id="insert" parameterType="commentVO">
- 		insert into	board_comment 
- 			(idx, ref, name, password, content, regDate, ip) 
- 		values 
+ 		insert into board_comment
+ 			(idx, ref, name, password, content, regDate, ip)
+ 		values
  			(comment_idx_seq.nextval, #{ref}, #{name}, #{password}, #{content}, SYSDATE, #{ip})
  	</insert>
  	<!-- 4. 댓글 수정 -->

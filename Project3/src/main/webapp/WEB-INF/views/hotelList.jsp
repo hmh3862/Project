@@ -55,6 +55,6 @@
 			</tbody>
 			</c:forEach>
 		</c:if>
-</table>
+	</table>
 </body>
 </html>

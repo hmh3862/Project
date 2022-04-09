@@ -194,7 +194,7 @@ function formCheck(){
 				<div class="col-sm-1"></div>
 				<div class="col-sm-2">
 				  <input type="button" class="btn-check" id="zipCodebtn" onclick="daumPostcode();">
-				  <label class="btn btn-outline-success" for="zipCodebtn">우편번호 찾기</label>
+				  <label class="btn btn-info" for="zipCodebtn">우편번호 찾기</label>
 				</div>
 			</div>
 			<div class="mb-3 row">
@@ -214,11 +214,11 @@ function formCheck(){
 					  <!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
 					  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					  <input type="submit" class="btn-check" id="submitBtn" >
-					  <label class="btn btn-outline-primary" for="submitBtn">회원가입</label>
+					  <label class="btn btn-primary" for="submitBtn">회원가입</label>
 					  <input type="reset" class="btn-check" id="resetBtn" >
-					  <label class="btn btn-outline-danger" for="resetBtn">다시쓰기</label>
+					  <label class="btn btn-danger" for="resetBtn">다시쓰기</label>
 					  <input type="button" class="btn-check" id="cancelBtn" onclick="location.href='${pageContext.request.contextPath}'">
-					  <label class="btn btn-outline-success" for="cancelBtn">돌아가기</label>
+					  <label class="btn btn-success" for="cancelBtn">돌아가기</label>
 				</div>
 			</div>
 		</form>

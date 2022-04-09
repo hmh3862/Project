@@ -119,6 +119,9 @@
 	function goList(){
 		SendPost("${pageContext.request.contextPath }/board/listNotice",{"p":${cv.currentPage },"s":${cv.pageSize },"b":${cv.blockSize }},"post");
 	}
+	function goHome(){
+		SendPost("${pageContext.request.contextPath }");
+	}
 </script>
 <style type="text/css">
 	* { font-size: 10pt; }
@@ -169,8 +172,8 @@
 			<tr>
 				<th valign="top">첨부파일</th>
 				<td colspan="3"> 
-					<input type="button" value=" + " class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
-					<input type="button" value=" - " class="btn btn-outline-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
+					<input type="button" value=" + " class="btn btn-primary btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
+					<input type="button" value=" - " class="btn btn-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
 					<span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span>
 					<br />
 					<div id="fileBox">
@@ -180,8 +183,9 @@
 			</tr>
 			<tr>
 				<td colspan="4" class="info">
-					<input type="submit" value=" 저장하기 " class="btn btn-outline-primary btn-sm" />
-					<input type="button" value=" 돌아가기 " class="btn btn-outline-success btn-sm" onclick="goList()"/>
+					<input type="submit" value=" 저장하기 " class="btn btn-primary btn-sm" />
+					<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goList()"/>
+					<input type="button" value=" 홈으로 " class="btn btn-primary btn-sm" onclick="goHome()"/>
 				</td>
 			</tr>
 		</table>
