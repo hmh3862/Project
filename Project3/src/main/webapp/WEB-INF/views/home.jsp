@@ -23,7 +23,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<%-- 부트스트랩을 사용하기 위한 준비 끝 --%>
 <style type="text/css">
-	h2 {font-weight:bold;}
+	h2 {font-weight:bold; width: 668px; text-align: center;}
 	td {font-size: 10pt}
 	.s_map .map_l {float:left; width:300px; margin-top:-1px;}
 	.s_map .map_r {float:right; width:334px; margin-top:-1px;}
@@ -35,8 +35,8 @@
 		<div class="inner">
 			<article class="box post post-excerpt">
 				<header>
-					<h2><a href="#">Welcome to Healing Stay</a></h2>
-					 <p>경기도 소재 호텔 정보 커뮤니티</p>
+					<h2><a href="${pageContext.request.contextPath }">Welcome to Healing Stay</a></h2>
+					 <p style="width: 668px; text-align: center;">경기도 소재 호텔 정보 커뮤니티</p>
 				</header>
 			</article>
 			
@@ -122,7 +122,7 @@
 			<!-- <img src="./resources/images/ggmap2.png" onclick="location.href='/hotel/hotelList'"/> -->
 		</div>
 		<!-- 여기에 리스트 출력 -->
-		<div style="width: 80%;">
+		<div style="width: 60%;">
 			<table class="table table-hover">
 				<c:if test="${not empty list}">
 					<thead>
