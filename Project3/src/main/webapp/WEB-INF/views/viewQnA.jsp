@@ -109,8 +109,10 @@
 						content += "<div class='comment'><div class='comment_head'>";
 						content += item.name + "님이 " + item.ip + "에서 ";
 						content += moment(item.regDate).format("YYYY년 MM월 DD일(ddd), h:mm:ss") + "에 남긴 글 ";
+						<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
 						content += "<button class='btn btn-primary btn-sm' onclick=\"updateComment('" +item.idx+ "','"+item.name+"')\" >수정</button> ";
 						content += "<button class='btn btn-danger btn-sm' onclick=\"deleteComment('" +item.idx+ "','"+item.name+"')\" >삭제</button> ";
+						</c:if>
 						content += "</div>";
 						content += "<div id='c"+ item.idx +"'>";
 						content += replaceAll(replaceAll(item.content,"<","&lt;"), "\n", "<br>") ;

@@ -333,9 +333,11 @@
 		</tr>
 		<tr>
 			<td colspan="4" class="info">
-				<input type="button" value=" 수정하기 " class="btn btn-primary btn-sm" onclick="goUpdate()"/>
-				<input type="button" value=" 삭제하기 " class="btn btn-danger btn-sm" onclick="goDelete()"/>
-				<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goBack()"/>
+				<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
+					<input type="button" value=" 수정하기 " class="btn btn-primary btn-sm" onclick="goUpdate()"/>
+					<input type="button" value=" 삭제하기 " class="btn btn-danger btn-sm" onclick="goDelete()"/>
+					<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goBack()"/>
+				</c:if>
 			</td>
 		</tr>
 		<tr>
