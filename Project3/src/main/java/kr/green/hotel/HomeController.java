@@ -46,8 +46,8 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("user", getPrincipal() );
 		
-		if(area==null) area="포천시";
-		if(img==null) img="m008o_6";
+		if(area==null) area="양평군";
+		if(img==null) img="m008o_17";
 		model.addAttribute("area", area );
 		model.addAttribute("img", img );
 		

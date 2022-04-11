@@ -39,13 +39,13 @@
 							<label class="input-group-addon" for="password">
 								<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i></label> 
 								<input type="password"	class="form-control" id="password" name="password"
-								placeholder="현재 비밀 번호 입력" required>
+								placeholder="현재 비밀번호 입력" required>
 						</div>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="newPassword">
-								<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i></label> 
+								<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:green;"></i></label> 
 								<input type="password"	class="form-control" id="newPassword" name="newPassword"
-								placeholder="새로운 비밀 번호 입력" required>
+								placeholder="새로운 비밀번호 입력" required>
 						</div>
 						<!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
 						<input type="hidden" name="${_csrf.parameterName}"

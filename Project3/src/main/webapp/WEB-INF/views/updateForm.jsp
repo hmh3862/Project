@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 정보 수정</title>
+<title>회원 정보 변경</title>
 <%-- 부트스트랩을 사용하기 위한 준비 시작 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -124,7 +124,7 @@ function formCheck(){
 <body>
 	<div class="container" style="border: 1px solid gray;padding: 15px;margin-top: 30px;border-radius: 30px;">
 		<form action="updateOk" method="post" onsubmit="return formCheck();">
-			<div class="title" >회원 정보 수정</div>
+			<div class="title" >회원 정보 변경</div>
 			<div class="mb-3 row">
 				<%-- idx는 숨겨서 넘기자 --%>
 				<input type="hidden" name="idx" value="${mvo.idx }" />
@@ -181,7 +181,7 @@ function formCheck(){
 				<div class="col-sm-1"></div>
 				<div class="col-sm-2">
 				  <input type="button" class="btn-check" id="zipCodebtn" onclick="daumPostcode();">
-				  <label class="btn btn-info" for="zipCodebtn">우편번호찾기</label>
+				  <label class="btn btn-info" for="zipCodebtn">우편번호 찾기</label>
 				</div>
 			</div>
 			<div class="mb-3 row">
@@ -201,7 +201,7 @@ function formCheck(){
 					  <!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
 					  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					  <input type="submit" class="btn-check" id="submitBtn" >
-					  <label class="btn btn-primary" for="submitBtn">정보수정</label>
+					  <label class="btn btn-primary" for="submitBtn">정보변경</label>
 					  <input type="reset" class="btn-check" id="resetBtn" >
 					  <label class="btn btn-danger" for="resetBtn">다시쓰기</label>
 					  <input type="button" class="btn-check" id="cancelBtn" onclick="location.href='${pageContext.request.contextPath}'">

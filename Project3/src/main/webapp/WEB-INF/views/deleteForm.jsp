@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원탈퇴</title>
+<title>회원 탈퇴</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -26,12 +26,12 @@
 							<label class="input-group-addon" for="username">
 							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
 							</label> <input type="text" class="form-control"
-								id="username" name="userid" placeholder="Enter Username" required>
+								id="username" name="userid" placeholder="사용자 아이디 입력" required>
 						</div>
 						<div class="input-group input-sm">
-							<label class="input-group-addon" for="password"><i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i></label> <input type="password"
+							<label class="input-group-addon" for="password"><i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:green;"></i></label> <input type="password"
 								class="form-control" id="password" name="password"
-								placeholder="Enter Password" required>
+								placeholder="비밀번호 입력" required>
 						</div>
 						<div class="input-group input-sm" style="margin-bottom: 15px;">
 							<textarea name="content" id="content" cols="70" rows="10" required placeholder="탈퇴 이유를 남겨주세요"></textarea>
@@ -42,7 +42,7 @@
 
 						<div class="form-actions">
 							<input type="submit"
-								class="btn btn-block btn-warning btn-default" value="회원탈퇴">
+								class="btn btn-block btn-warning btn-default" value="회원 탈퇴">
 						</div>
 						<div style="text-align: center;margin: 15px;">
 							[<a href="${pageContext.request.contextPath }">홈으로</a>]

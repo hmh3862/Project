@@ -23,8 +23,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<%-- 부트스트랩을 사용하기 위한 준비 끝 --%>
 <style type="text/css">
-	h2 {font-weight:bold; width: 668px; text-align: center;}
+	h2 {font-weight:bold; text-align: center;}
 	td {font-size: 10pt}
+	.s_map {margin: 0 auto;}
 	.s_map .map_l {float:left; width:300px; margin-top:-1px;}
 	.s_map .map_r {float:right; width:334px; margin-top:-1px;}
 </style>
@@ -36,7 +37,7 @@
 			<article class="box post post-excerpt">
 				<header>
 					<h2><a href="${pageContext.request.contextPath }">Welcome to Healing Stay</a></h2>
-					 <p style="width: 668px; text-align: center;">경기도 소재 호텔 정보 커뮤니티</p>
+					 <p style="text-align: center;">경기도 소재 호텔 정보 커뮤니티</p>
 				</header>
 			</article>
 			
@@ -56,7 +57,7 @@
 					<map name="Map" id="Map">
 						<area shape="poly" coords="91,88,95,80,110,80,119,83,123,94,121,99,111,103,98,101" key="map01" tourcode="1" img="./resources/images/map/map01.gif" href="javascript:void(0);" onfocus="blur();" area="서울특별시" alt="서울특별시" title="서울특별시">
 						<area shape="poly" coords="61,84,74,73,81,78,81,91,88,91,93,102,75,101,61,94" key="map02" tourcode="2" img="./resources/images/map/map02.gif" href="javascript:void(0);" onfocus="blur();" area="인천광역시" alt="인천광역시" title="인천광역시">
-						<area shape="poly" coords="113,45,138,70,135,83,142,93,150,93,149,119,123,134,95,132,92,116,99,104,116,106,125,97,121,82,105,77,96,78,97,66" key="map03" tourcode="31" img="./resources/images/map/map03.gif" href="/hotel/hotelList" onfocus="blur();" area="경기도" alt="경기도" title="경기도">
+						<area shape="poly" coords="113,45,138,70,135,83,142,93,150,93,149,119,123,134,95,132,92,116,99,104,116,106,125,97,121,82,105,77,96,78,97,66" key="map03" tourcode="31" img="./resources/images/map/map03.gif" href="javascript:void(0);" onfocus="blur();" area="경기도" alt="경기도" title="경기도">
 						<area shape="poly" coords="117,44,140,67,139,81,146,90,154,93,154,119,167,112,196,123,235,121,232,104,189,37,168,44" key="map04" tourcode="32" img="./resources/images/map/map04.gif" href="javascript:void(0);" onfocus="blur();" area="강원도" alt="강원도" title="강원도">
 						<area shape="poly" coords="128,169,124,175,124,183,133,186,142,183,145,173" key="map05" tourcode="3" img="./resources/images/map/map05.gif" href="javascript:void(0);" onfocus="blur();" area="대전광역시" alt="대전광역시" title="대전광역시">
 						<area shape="poly" coords="122,149,115,155,114,169,119,175,127,166,144,164,145,157" key="map06" tourcode="8" img="./resources/images/map/map06.gif" href="javascript:void(0);" onfocus="blur();" area="세종특별자치시" alt="세종특별자치시" title="세종특별자치시">
@@ -122,7 +123,7 @@
 			<!-- <img src="./resources/images/ggmap2.png" onclick="location.href='/hotel/hotelList'"/> -->
 		</div>
 		<!-- 여기에 리스트 출력 -->
-		<div style="width: auto;;">
+		<div style="width: 100%;">
 			<table class="table table-hover">
 				<c:if test="${not empty list}">
 					<thead>
@@ -166,7 +167,7 @@
 			</form>
 			<br />
 			<a href="updatePasswordForm">비밀 번호 변경</a> <br />
-			<a href="updateForm">회원 정보 수정</a> <br />
+			<a href="updateForm">회원 정보 변경</a> <br />
 			<a href="deleteForm">회원 탈퇴</a>
 		</c:if>
 		<c:if test='${user== "anonymousUser" }'>
