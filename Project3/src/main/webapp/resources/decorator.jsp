@@ -6,6 +6,7 @@
 <html lang="ko">
  <head>
     <meta charset="utf-8" />
+    <title><sitemesh:write property='title'/></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="resources/assets/css/main.css" />
 	<link rel="stylesheet" href="resources/assets/js/jquery.min.js" />
@@ -13,34 +14,22 @@
 	<link rel="stylesheet" href="resources/assets/js/breakpoints.min.js" />
 	<link rel="stylesheet" href="resources/assets/js/util.js" />
 	<link rel="stylesheet" href="resources/assets/js/main.js" />
-<%-- <decorator:title/>는 보여줄 페이지의 title을 가져온다. --%>
-
-<title>Healing Stay</title>
-
-<style type="text/css">
-
-#decoratorHd,footer{background-color: orange;}
-
-</style>
-
-<%-- <decorator:head/>는 보여줄 페이지의 head을 가져온다. --%>
-
-<decorator:head/>
+	<sitemesh:write property='head' />
 </head>
-
-<article>
-
-<%-- <decorator:body/>는 보여줄 페이지의 body을 가져온다. --%>
-
-<decorator:body/>
+<script>
+	$(function(){
+		
+	});
+	function goHome(){
+		SendPost("${pageContext.request.contextPath }");
+	}
+</script>
 <body>
-	<header>
-		<h2><a href="${pageContext.request.contextPath }">Welcome to Healing Stay</a></h2>
-	</header>
-	</article>
-
-<footer>
-<h3>Healing Stay</h3>
-</footer>
+	<div>
+		<input type="button" value="홈으로" class="btn btn-primary btn-sm" onclick="goHome()"/>
+	</div>
+	<div>
+		<sitemesh:write property='body' />
+	</div>
 </body>
 </html>

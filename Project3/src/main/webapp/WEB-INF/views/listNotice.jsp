@@ -143,8 +143,8 @@
 				<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
 					<button type="button" class="btn btn-success btn-sm" 
 			        	onclick='SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
-			     	<input type="button" value="홈으로" class="btn btn-primary btn-sm" onclick="goHome()"/>
 		    	</c:if>
+			     	<input type="button" value="홈으로" class="btn btn-primary btn-sm" onclick="goHome()"/>
 			</td>
 		</tr>
 	</table>
