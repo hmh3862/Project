@@ -122,7 +122,7 @@ function formCheck(){
 </style>
 </head>
 <body>
-	<div class="container" style="border: 1px solid gray;padding: 15px;margin-top: 30px;border-radius: 30px;">
+	<div class="container" style="border: 1px solid gray;padding: 30px;margin-top: 30px;margin-bottom:30px; border-radius: 30px;">
 		<form action="updateOk" method="post" onsubmit="return formCheck();">
 			<div class="title" >회원 정보 변경</div>
 			<div class="mb-3 row">

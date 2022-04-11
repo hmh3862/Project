@@ -275,7 +275,7 @@
 	table#main_content{width: 80%; margin: auto;}
 	th {border: 1px solid gray; background-color: pink; padding: 5px; text-align: center;}
 	td {border: 1px solid gray; padding: 5px;}
-	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt;}
+	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt; font-weight: bold;}
 	td.info {border:none; padding: 5px; text-align: right; }
 	td.home {border:none; padding: 5px; text-align: left;}
 	.fileItem { margin-bottom: 3px;}

@@ -272,7 +272,7 @@
 	table#main_content{width: 80%; margin: auto;}
 	th {border: 1px solid gray; background-color: pink; padding: 5px; text-align: center;}
 	td {border: 1px solid gray; padding: 5px;}
-	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt;}
+	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt; font-weight: bold;}
 	td.info {border:none; padding: 5px; text-align: right; }
 	td.home {border:none; padding: 5px; text-align: left;}
 	.fileItem { margin-bottom: 3px;}
@@ -336,8 +336,8 @@
 				<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
 					<input type="button" value=" 수정하기 " class="btn btn-primary btn-sm" onclick="goUpdate()"/>
 					<input type="button" value=" 삭제하기 " class="btn btn-danger btn-sm" onclick="goDelete()"/>
-					<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goBack()"/>
 				</c:if>
+					<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goBack()"/>
 			</td>
 		</tr>
 		<tr>

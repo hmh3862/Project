@@ -160,15 +160,16 @@
 		<br />
 		<c:if test='${pageContext.request.userPrincipal.name !=null }'>
 			<c:url value="/logout" var="logoutURL"/>
-			<form action="${logoutURL }" method="post" id="logoutForm">
+			<form style="text-align: center;" action="${logoutURL }" method="post" id="logoutForm">
 				<%-- 시큐리티에 있는 로그아웃을 사용하려면 토큰값도 넘겨줘야 한다. --%>
 				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 				<input type="submit" value="로그아웃">
 			</form>
 			<br />
-			<a href="updatePasswordForm">비밀 번호 변경</a> <br />
-			<a href="updateForm">회원 정보 변경</a> <br />
-			<a href="deleteForm">회원 탈퇴</a>
+			[<a href="updatePasswordForm">비밀 번호 변경</a>]
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			[<a href="updateForm">회원 정보 변경</a>] <br />
+			[<a style="margin: 0 auto;" href="deleteForm">회원 탈퇴</a>]
 		</c:if>
 		<c:if test='${user== "anonymousUser" }'>
 			[<a href="insertForm">회원가입</a>]
@@ -179,10 +180,10 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
-				<li><a href="board/listNotice">공지사항</a></li>
-				<li><a href="board/list">후기게시판</a></li>
-				<li><a href="board/listFree">자유게시판</a></li>
-				<li><a href="board/listQnA">Q&A</a></li>
+				<li><a style="font-size: 14pt;" href="board/listNotice">공지사항</a></li>
+				<li><a style="font-size: 14pt;" href="board/list">후기게시판</a></li>
+				<li><a style="font-size: 14pt;" href="board/listFree">자유게시판</a></li>
+				<li><a style="font-size: 14pt;" href="board/listQnA">Q&A</a></li>
 			</ul>
 		</nav>
 	</div>
