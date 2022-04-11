@@ -274,7 +274,6 @@
 	td {border: 1px solid gray; padding: 5px;}
 	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt;}
 	td.info {border:none; padding: 5px; text-align: right; }
-	td.info2 {border: 1px solid gray; padding: 5px; text-align: center; }
 	td.home {border:none; padding: 5px; text-align: left;}
 	.fileItem { margin-bottom: 3px;}
 	.comment {	border: 1px solid gray; padding : 5px; margin-bottom: 5px; }
@@ -282,6 +281,7 @@
 </style>
 </head>
 <body>
+<div class="container" style="border: 1px solid gray; padding: 30px; margin-top: 30px; margin-bottom: 30px; border-radius: 30px;">
 	<table id="main_content">
 		<tr>
 			<td colspan="4" class="title" >공지사항 내용보기</td>
@@ -348,7 +348,7 @@
 				<input type="text" name="name" id="name" placeholder="이름 입력" required="required" /> 
 				<input type="password" name="password" id="password" placeholder="비밀번호 입력" required="required" style="margin-bottom: 5px;" /> 
 				<br /> 
-				<textarea name="content" id="comment_content" cols="250" rows="5" placeholder="내용 입력" required="required"></textarea>
+				<textarea name="content" id="comment_content" cols="140" rows="5" placeholder="내용 입력" required="required"></textarea>
 					<div style="text-align: right; margin-top: 5px;">
 						<button id="submitBtn" class="btn btn-primary btn-sm" onclick="buttonComment()">저장</button>
 						<button id="cancelBtn" style="display: none;" class="btn btn-danger btn-sm" onclick="resetComment()">취소</button>
@@ -367,5 +367,5 @@
 			</td>
 		</tr>
 	</table>
-</body>
+</div>
 </html>

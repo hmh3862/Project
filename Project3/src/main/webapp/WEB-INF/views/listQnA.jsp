@@ -37,6 +37,7 @@
 </style>
 </head>
 <body>
+<div class="container" style="border: 1px solid gray; padding: 30px; margin-top: 30px; margin-bottom: 30px; border-radius: 30px;">
 	<table id="content">
 		<tr>
 			<td colspan="5" class="title">Q&A</td>
@@ -136,6 +137,7 @@
 			    <input type="button" value="홈으로" class="btn btn-primary btn-sm" onclick="goHome()"/>
 			</td>
 		</tr>
-	</table>	
+	</table>
+</div>	
 </body>
 </html>

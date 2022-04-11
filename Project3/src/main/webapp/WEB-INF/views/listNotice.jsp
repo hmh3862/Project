@@ -45,6 +45,7 @@
 </style>
 </head>
 <body>
+<div class="container" style="border: 1px solid gray; padding: 30px; margin-top: 30px; margin-bottom: 30px; border-radius: 30px;">
 	<table id="content">
 		<tr>
 			<td colspan="5" class="title">공지사항</td>
@@ -146,6 +147,7 @@
 		    	</c:if>
 			</td>
 		</tr>
-	</table>	
+	</table>
+</div>
 </body>
 </html>
