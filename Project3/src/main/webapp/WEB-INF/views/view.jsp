@@ -117,6 +117,11 @@
 						content += "</div></div>";
 					});
 					$("#commentBox").html(content);
+				}else{
+					var content = '<div style="border: 1px solid gray; padding:5px;text-align: center;">';
+					content += '등록된 댓글이 없습니다.';
+					content += '</div>';
+					$("#commentBox").html(content);
 				}
 			},
 			error : function(){

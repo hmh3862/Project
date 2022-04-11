@@ -122,7 +122,7 @@
 			<!-- <img src="./resources/images/ggmap2.png" onclick="location.href='/hotel/hotelList'"/> -->
 		</div>
 		<!-- 여기에 리스트 출력 -->
-		<div style="width: 60%;">
+		<div style="width: auto;;">
 			<table class="table table-hover">
 				<c:if test="${not empty list}">
 					<thead>

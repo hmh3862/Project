@@ -17,7 +17,7 @@
  		insert into	qna_comment 
  			(idx, ref, name, password, content, regDate, ip) 
  		values 
- 			(comment_idx_seq.nextval, #{ref}, #{name}, #{password}, #{content}, SYSDATE, #{ip})
+ 			(qna_comment_idx_seq.nextval, #{ref}, #{name}, #{password}, #{content}, SYSDATE, #{ip})
  	</insert>
  	<!-- 4. 댓글 수정 -->
  	<update id="update" parameterType="qnaCommentVO">

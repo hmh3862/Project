@@ -38,3 +38,5 @@ create table board_comment(
 SELECT * FROM fileBoard;
 SELECT * FROM fileBoardFile;
 SELECT * FROM board_comment;
+
+SELECT comment_idx_seq.nextval FROM dual;
