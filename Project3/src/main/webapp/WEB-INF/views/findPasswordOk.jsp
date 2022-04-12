@@ -23,9 +23,9 @@
 					</div>					
 					<div style="margin: 15px;text-align: center;">
 						<input type="button" onclick="location.href='${pageContext.request.contextPath}/login'"
-							class="btn btn-warning btn-default" value="로그인하기">
+							class="btn btn-success btn-default" value="로그인">
 						<input type="button" onclick="location.href='${pageContext.request.contextPath}'"
-							class="btn btn-success btn-default" value="홈으로가기">
+							class="btn btn-primary btn-default" value="홈으로">
 					</div>
 				</div>
 			</div>

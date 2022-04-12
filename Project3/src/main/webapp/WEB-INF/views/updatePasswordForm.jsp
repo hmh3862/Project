@@ -5,20 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 변경하기</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/3c36eed32b.js" crossorigin="anonymous"></script>
-	
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/app.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
 </head>
-
 <body>
 	<div id="mainWrapper">
 		<div class="login-container">
@@ -32,28 +25,25 @@
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="userid">
 							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
-							</label> <input type="text" class="form-control"
-								id="userid" name="userid" placeholder="사용자 아이디 입력" required value="${mvo.userid }">
+							</label> <input type="text" class="form-control" id="userid" name="userid" 
+								placeholder="사용자 아이디 입력" required value="${mvo.userid }">
 						</div>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="password">
-								<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i></label> 
-								<input type="password"	class="form-control" id="password" name="password"
+							<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i>
+							</label> <input type="password"	class="form-control" id="password" name="password"
 								placeholder="현재 비밀번호 입력" required>
 						</div>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="newPassword">
-								<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:green;"></i></label> 
-								<input type="password"	class="form-control" id="newPassword" name="newPassword"
+							<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:green;"></i>
+							</label> <input type="password"	class="form-control" id="newPassword" name="newPassword"
 								placeholder="새로운 비밀번호 입력" required>
 						</div>
 						<!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<div class="form-actions">
-							<input type="submit"
-								class="btn btn-block btn-warning btn-default" value="비밀번호 변경하기">
+							<input type="submit" class="btn btn-block btn-success btn-default" value="비밀번호 변경하기">
 						</div>
 						<div style="text-align: center;margin: 15px;">
 							[<a href="${pageContext.request.contextPath }">홈으로</a>]
@@ -63,6 +53,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

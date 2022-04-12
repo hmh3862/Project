@@ -39,7 +39,7 @@
 					<th scope="col">시군명</th>
 					<th scope="col">사업장명</th>
 					<th scope="col">전화번호</th>
-					<th scope="col">도로명 우편번호</th>
+					<th scope="col">우편번호</th>
 					<th scope="col">도로명 주소</th>
 				</tr>
 			</thead>

@@ -5,16 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Login page</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/3c36eed32b.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/app.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
 </head>
-
 <body>
 	<div id="mainWrapper">
 		<div class="login-container">
@@ -38,7 +35,7 @@
 						</div>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="password">
-							<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:green;"></i></label> 
+							<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i></label> 
 							<input type="password" class="form-control" id="password" name="password"
 								placeholder="비밀번호 입력" required>
 						</div>
@@ -46,12 +43,12 @@
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 						<div class="form-actions">
-							<input type="submit" class="btn btn-block btn-warning btn-default" value="로그인">
+							<input type="submit" class="btn btn-block btn-success btn-default" value="로그인">
 						</div>
 						<div style="text-align: center;margin: 15px;">
-							[<a href="findUserid">아이디찾기</a>] 
+							[<a href="findUserid">아이디 찾기</a>] 
 							&nbsp;&nbsp;&nbsp;
-							[<a href="findPassword">비밀번호찾기</a>]
+							[<a href="findPassword">비밀번호 찾기</a>]
 							&nbsp;&nbsp;&nbsp;
 							[<a href="${pageContext.request.contextPath }">홈으로</a>]
 						</div>

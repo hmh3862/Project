@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://kit.fontawesome.com/5835e4ac0d.js"></script>
@@ -45,109 +46,113 @@
 </style>
 </head>
 <body>
-<div class="container" style="border: 1px solid gray; padding: 30px; margin-top: 30px; margin-bottom: 30px; border-radius: 30px;">
-	<table id="content">
-		<tr>
-			<td colspan="5" class="title">공지사항</td>
-		</tr>
-		<tr>
-			<td colspan="2" class="home">
-				<a href="${pageContext.request.contextPath }">
-					<i class="axi axi-home" style="font-size:30px"></i>
-				</a>
-			</td>
-			<td colspan="5" class="info">
-				${pv.pageInfo }
-				<script type="text/javascript">
-					$(function(){
-						$("#listCount").change(function(){
-							var pageSize = $(this).val();
-							SendPost("${pageContext.request.contextPath }/board/listNotice", {"p":${cv.currentPage},"s":pageSize,"b":${cv.blockSize}});
-						});	
-					});
-				</script>
-				<select id="listCount">
-					<option value="5" ${cv.pageSize==5 ? " selected='selected' " : "" }> 5개</option>
-					<option value="10" ${cv.pageSize==10 ? " selected='selected' " : "" }>10개</option>
-					<option value="20" ${cv.pageSize==20 ? " selected='selected' " : "" }>20개</option>
-					<option value="30" ${cv.pageSize==30 ? " selected='selected' " : "" }>30개</option>
-					<option value="40" ${cv.pageSize==50 ? " selected='selected' " : "" }>50개</option>
-				</select>씩 보기	
-			</td>
-		</tr>
-		<tr>
-			<th>No</th>
-			<th width="60%">제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>첨부파일</th>
-		</tr>
-		<c:if test="${pv.totalCount==0 }">
-			<tr>
-				<td colspan="5" class="info2">등록된 글이 없습니다.</td>
-			</tr>
-		</c:if>
-		<c:if test="${not empty pv.list }">
-			<%-- 시작 번호 계산 --%>
-			<c:set var="no" value="${pv.totalCount - (pv.currentPage-1)*pv.pageSize }"/>
-			<c:forEach var="vo" items="${pv.list }" varStatus="vs">
-				<tr align="center">
-					<td>
-						${no }
-						<c:set var="no" value="${no - 1 }"/>
-					</td>
-					<td align="left" >
-						<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/viewNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'>
-							<c:out value="${vo.subject }"></c:out>
-						</a>
-						<%-- 댓글의 개수를 출력해 주자 --%>
-						<c:if test="${vo.noticeCommentCount>0 }">
-							- [${vo.noticeCommentCount }]
-						</c:if>
-						<%-- 오늘 저장한 글이면 new 아이콘을 달아보자  --%>		
-						<jsp:useBean id="today" scope="request" class="java.util.Date"></jsp:useBean>				
-						<fmt:formatDate value="${today }" pattern="yyyyMMdd" var="day"/> 
-						<fmt:formatDate value="${vo.regDate }" pattern="yyyyMMdd" var="reg"/> 
-						<c:if test="${day==reg }">
-							  <span style="color:red;">New</span>
-						</c:if>
-					</td>
-					<td>
-						<c:out value="${vo.name }"></c:out>
-					</td>
-					<td>
-						<fmt:formatDate value="${vo.regDate }" type="date" dateStyle="short"/>
-					</td>
-					<td>
-						<%-- 첨부파일을 다운 받도록 링크를 달아준다. --%>
-						<c:if test="${not empty vo.fileList }">
-							<c:forEach var="fvo" items="${vo.fileList }">
-								<c:url var="url" value="/board/download">
-									<c:param name="of" value="${fvo.oriName }"></c:param>
-									<c:param name="sf" value="${fvo.saveName }"></c:param>
-								</c:url>
-								<a href="${url }" title="${fvo.oriName }"><span class="material-icons">file_download</span></a>
-							</c:forEach>
-						</c:if>
-					</td>
-				</tr>		
-			</c:forEach>
-			<tr>
-				<td style="border: none;text-align: center;" colspan="5">
-					${pv.pageList }
-				</td>
-			</tr>
-		</c:if>
-		<tr>
-			<td class="info" colspan="5">
-				<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
-					<button type="button" class="btn btn-success btn-sm" 
-			        	onclick='SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
-		    	</c:if>
-			     	<input type="button" value="홈으로" class="btn btn-primary btn-sm" onclick="goHome()"/>
-			</td>
-		</tr>
-	</table>
-</div>
+	<div id="mainWrapper">
+		<div class="member-container">
+			<div class="member-card" style="margin-top: 30px; margin-bottom: 30px;">
+				<table id="content">
+					<tr>
+						<td colspan="5" class="title">공지사항</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="home">
+							<a style="text-decoration: none;" href="${pageContext.request.contextPath }">
+								<i class="axi axi-home" style="font-size:30px"></i>
+							</a>
+						</td>
+						<td colspan="5" class="info">
+							${pv.pageInfo }
+							<script type="text/javascript">
+								$(function(){
+									$("#listCount").change(function(){
+										var pageSize = $(this).val();
+										SendPost("${pageContext.request.contextPath }/board/listNotice", {"p":${cv.currentPage},"s":pageSize,"b":${cv.blockSize}});
+									});	
+								});
+							</script>
+							<select id="listCount">
+								<option value="5" ${cv.pageSize==5 ? " selected='selected' " : "" }> 5개</option>
+								<option value="10" ${cv.pageSize==10 ? " selected='selected' " : "" }>10개</option>
+								<option value="20" ${cv.pageSize==20 ? " selected='selected' " : "" }>20개</option>
+								<option value="30" ${cv.pageSize==30 ? " selected='selected' " : "" }>30개</option>
+								<option value="40" ${cv.pageSize==50 ? " selected='selected' " : "" }>50개</option>
+							</select>씩 보기	
+						</td>
+					</tr>
+					<tr>
+						<th>No</th>
+						<th width="60%">제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>첨부파일</th>
+					</tr>
+					<c:if test="${pv.totalCount==0 }">
+						<tr>
+							<td colspan="5" class="info2">등록된 글이 없습니다.</td>
+						</tr>
+					</c:if>
+					<c:if test="${not empty pv.list }">
+						<%-- 시작 번호 계산 --%>
+						<c:set var="no" value="${pv.totalCount - (pv.currentPage-1)*pv.pageSize }"/>
+						<c:forEach var="vo" items="${pv.list }" varStatus="vs">
+							<tr align="center">
+								<td>
+									${no }
+									<c:set var="no" value="${no - 1 }"/>
+								</td>
+								<td align="left" >
+									<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/viewNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'>
+										<c:out value="${vo.subject }"></c:out>
+									</a>
+									<%-- 댓글의 개수를 출력해 주자 --%>
+									<c:if test="${vo.noticeCommentCount>0 }">
+										- [${vo.noticeCommentCount }]
+									</c:if>
+									<%-- 오늘 저장한 글이면 new 아이콘을 달아보자  --%>		
+									<jsp:useBean id="today" scope="request" class="java.util.Date"></jsp:useBean>				
+									<fmt:formatDate value="${today }" pattern="yyyyMMdd" var="day"/> 
+									<fmt:formatDate value="${vo.regDate }" pattern="yyyyMMdd" var="reg"/> 
+									<c:if test="${day==reg }">
+										  <span style="color:red;">New</span>
+									</c:if>
+								</td>
+								<td>
+									<c:out value="${vo.name }"></c:out>
+								</td>
+								<td>
+									<fmt:formatDate value="${vo.regDate }" type="date" dateStyle="short"/>
+								</td>
+								<td>
+									<%-- 첨부파일을 다운 받도록 링크를 달아준다. --%>
+									<c:if test="${not empty vo.fileList }">
+										<c:forEach var="fvo" items="${vo.fileList }">
+											<c:url var="url" value="/board/download">
+												<c:param name="of" value="${fvo.oriName }"></c:param>
+												<c:param name="sf" value="${fvo.saveName }"></c:param>
+											</c:url>
+											<a href="${url }" title="${fvo.oriName }"><span class="material-icons">file_download</span></a>
+										</c:forEach>
+									</c:if>
+								</td>
+							</tr>		
+						</c:forEach>
+						<tr>
+							<td style="border: none;text-align: center;" colspan="5">
+								${pv.pageList }
+							</td>
+						</tr>
+					</c:if>
+					<tr>
+						<td class="info" colspan="5">
+							<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
+								<button type="button" class="btn btn-success btn-sm" 
+						        	onclick='SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")'>글쓰기</button>
+					    	</c:if>
+						     	<input type="button" value="홈으로" class="btn btn-primary btn-sm" onclick="goHome()"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

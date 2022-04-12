@@ -166,25 +166,30 @@
 				<input type="submit" value="로그아웃">
 			</form>
 			<br />
-			[<a href="updatePasswordForm">비밀 번호 변경</a>]
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			[<a href="updateForm">회원 정보 변경</a>] <br />
-			[<a style="margin: 0 auto;" href="deleteForm">회원 탈퇴</a>]
+			<div style="text-align: center;">
+				[<a style="text-decoration: none;" href="updatePasswordForm">비밀 번호 변경</a>] <br />
+				[<a style="text-decoration: none;" href="updateForm">회원 정보 변경</a>] <br />
+				[<a style="text-decoration: none;" href="deleteForm">회원 탈퇴 하기</a>]
+			</div>
 		</c:if>
-		<c:if test='${user== "anonymousUser" }'>
-			[<a href="insertForm">회원가입</a>]
-			&nbsp;&nbsp;&nbsp;
-			[<a href="${pageContext.request.contextPath }/login">로그인</a>]
-		</c:if>
+		<div style="text-align: center;">
+			<c:if test='${user== "anonymousUser" }'>
+				[<a style="text-decoration: none;" href="insertForm">회원가입</a>]
+				&nbsp;&nbsp;&nbsp;
+				[<a style="text-decoration: none;" href="${pageContext.request.contextPath }/login">로그인</a>]
+			</c:if>
+		</div>
 		
 		<!-- Nav -->
 		<nav id="nav">
-			<ul>
-				<li><a style="font-size: 14pt;" href="board/listNotice">공지사항</a></li>
-				<li><a style="font-size: 14pt;" href="board/list">후기게시판</a></li>
-				<li><a style="font-size: 14pt;" href="board/listFree">자유게시판</a></li>
-				<li><a style="font-size: 14pt;" href="board/listQnA">Q&A</a></li>
-			</ul>
+			<div style="text-align: center;">
+				<ul>
+					<li><a style="font-size: 14pt;" href="board/listNotice">공지사항</a></li>
+					<li><a style="font-size: 14pt;" href="board/list">후기게시판</a></li>
+					<li><a style="font-size: 14pt;" href="board/listFree">자유게시판</a></li>
+					<li><a style="font-size: 14pt;" href="board/listQnA">Q&A</a></li>
+				</ul>
+			</div>
 		</nav>
 	</div>
 </body>

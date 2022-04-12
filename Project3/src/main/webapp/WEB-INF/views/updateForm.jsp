@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 변경</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
 <%-- 부트스트랩을 사용하기 위한 준비 시작 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -122,93 +123,98 @@ function formCheck(){
 </style>
 </head>
 <body>
-	<div class="container" style="border: 1px solid gray;padding: 30px;margin-top: 30px;margin-bottom:30px; border-radius: 30px;">
-		<form action="updateOk" method="post" onsubmit="return formCheck();">
-			<div class="title" >회원 정보 변경</div>
-			<div class="mb-3 row">
-				<%-- idx는 숨겨서 넘기자 --%>
-				<input type="hidden" name="idx" value="${mvo.idx }" />
-				
-			  	<label for="userid" class="col-sm-2 col-form-label">사용자 아이디</label>
-			  	<div class="col-sm-2">
-				<input type="text" class="form-control" id="userid" name="userid" readonly value="${mvo.userid }">
-				</div>
-				<div class="col-sm-1 col-form-label" id="msg"></div>
-				<div class="col-sm-2"></div>
-			  	<label for="password" class="col-sm-2 col-form-label">사용자 비밀번호</label>
-			  	<div class="col-sm-3">
-				<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호입력"  required>
+	<div id="mainWrapper">
+		<div class="member-container">
+			<div class="member-card">
+				<div class="member-form">
+					<form action="updateOk" method="post" onsubmit="return formCheck();">
+						<div class="title" >회원 정보 변경</div>
+						<div class="mb-3 row">
+							<%-- idx는 숨겨서 넘기자 --%>
+							<input type="hidden" name="idx" value="${mvo.idx }" />
+						  	<label for="userid" class="col-sm-2 col-form-label">사용자 아이디</label>
+						  	<div class="col-sm-2">
+								<input type="text" class="form-control" id="userid" name="userid" readonly value="${mvo.userid }">
+							</div>
+							<div class="col-sm-1 col-form-label" id="msg"></div>
+							<div class="col-sm-2"></div>
+						  		<label for="password" class="col-sm-2 col-form-label">사용자 비밀번호</label>
+						  	<div class="col-sm-3">
+								<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 입력"  required>
+							</div>
+						</div>
+						<div class="mb-3 row">
+						  	<label for="username" class="col-sm-2 col-form-label">사용자 이름</label>
+						  	<div class="col-sm-3">
+								<input type="text" class="form-control" id="username" name="username" value="${sessionScope.mvo.username }" required>
+							</div>
+							<div class="col-sm-2"></div>
+						  		<label for="nickname" class="col-sm-2 col-form-label">사용자 별명</label>
+						  	<div class="col-sm-3">
+								<input type="text" class="form-control" id="nickname" name="nickname" value="${sessionScope.mvo.nickname }" required>
+							</div>
+						</div>
+						<div class="mb-3 row">
+						  	<label for="email" class="col-sm-2 col-form-label">사용자 이메일</label>
+						  	<div class="col-sm-3">
+								<input type="email" class="form-control" id="email" name="email" value="${sessionScope.mvo.email }"  readonly>
+							</div>
+							<div class="col-sm-2"></div>
+						  		<label for="hp" class="col-sm-2 col-form-label">사용자 전화번호</label>
+						  	<div class="col-sm-3">
+								<input type="tel" class="form-control" id="hp" name="hp" value="${sessionScope.mvo.hp }"  required>
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<label class="col-sm-2 col-form-label">성별</label>
+							<div class="col-sm-2">
+							  	<label for="gender1" class="col-sm-3 col-form-label">남자</label>
+								<input class="form-check-input" type="radio" name="gender" id="gender1" value="M" ${mvo.gender=='M' ? "checked" : ""}>
+							</div>
+							<div class="col-sm-2">
+							  	<label for="gender2" class="col-sm-3 col-form-label">여자</label>
+								<input class="form-check-input" type="radio" name="gender" id="gender2" value="F" ${mvo.gender=='F' ? "checked" : ""}>
+							</div> 
+						</div>
+						<div class="mb-3 row">
+							<label class="col-sm-2 col-form-label" for="zipcode">우편번호</label>
+							<div class="col-sm-2">
+								<input class="form-control" type="text" name="zipcode" id="zipcode" readonly  required value="${mvo.zipcode }">
+							</div>
+							<div class="col-sm-1"></div>
+							<div class="col-sm-2">
+								<input type="button" class="btn-check" id="zipCodebtn" onclick="daumPostcode();">
+								<label class="btn btn-outline-success" for="zipCodebtn">우편번호 찾기</label>
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<label class="col-sm-2 col-form-label" for="address1">주소</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" name="address1" id="address1" readonly  required value="${mvo.address1 }">
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<label class="col-sm-2 col-form-label" for="address2">상세주소</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" name="address2" id="address2"  required  value="${mvo.address2 }">
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<div class="col-sm-12" style="text-align: right;">
+								<!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<input type="submit" class="btn-check" id="submitBtn" >
+								<label class="btn btn-primary" for="submitBtn">정보변경</label>
+								<input type="reset" class="btn-check" id="resetBtn" >
+								<label class="btn btn-danger" for="resetBtn">다시쓰기</label>
+								<input type="button" class="btn-check" id="cancelBtn" onclick="location.href='${pageContext.request.contextPath}'">
+								<label class="btn btn-success" for="cancelBtn">홈으로</label>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-			<div class="mb-3 row">
-			  	<label for="username" class="col-sm-2 col-form-label">사용자 이름</label>
-			  	<div class="col-sm-3">
-				<input type="text" class="form-control" id="username" name="username" value="${sessionScope.mvo.username }" required>
-				</div>
-				<div class="col-sm-2"></div>
-			  	<label for="nickname" class="col-sm-2 col-form-label">사용자 별명</label>
-			  	<div class="col-sm-3">
-				<input type="text" class="form-control" id="nickname" name="nickname" value="${sessionScope.mvo.nickname }" required>
-				</div>
-			</div>
-			<div class="mb-3 row">
-			  	<label for="email" class="col-sm-2 col-form-label">사용자 이메일</label>
-			  	<div class="col-sm-3">
-				<input type="email" class="form-control" id="email" name="email" value="${sessionScope.mvo.email }"  readonly>
-				</div>
-				<div class="col-sm-2"></div>
-			  	<label for="hp" class="col-sm-2 col-form-label">사용자 전화번호</label>
-			  	<div class="col-sm-3">
-				<input type="tel" class="form-control" id="hp" name="hp" value="${sessionScope.mvo.hp }"  required>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 col-form-label">성별</label>
-				<div class="col-sm-2">
-			  	  <label for="gender1" class="col-sm-2 col-form-label">남자</label>
-				  <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" ${mvo.gender=='M' ? "checked" : ""}>
-				</div>
-				<div class="col-sm-2">
-			  	  <label for="gender2" class="col-sm-2 col-form-label">여자</label>
-				  <input class="form-check-input" type="radio" name="gender" id="gender2" value="F" ${mvo.gender=='F' ? "checked" : ""}>
-				 </div> 
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 col-form-label" for="zipcode">우편번호</label>
-				<div class="col-sm-2">
-				  <input class="form-control" type="text" name="zipcode" id="zipcode" readonly  required value="${mvo.zipcode }">
-				</div>
-				<div class="col-sm-1"></div>
-				<div class="col-sm-2">
-				  <input type="button" class="btn-check" id="zipCodebtn" onclick="daumPostcode();">
-				  <label class="btn btn-info" for="zipCodebtn">우편번호 찾기</label>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 col-form-label" for="address1">주소</label>
-				<div class="col-sm-10">
-				  <input class="form-control" type="text" name="address1" id="address1" readonly  required value="${mvo.address1 }">
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 col-form-label" for="address2">상세주소</label>
-				<div class="col-sm-10">
-				  <input class="form-control" type="text" name="address2" id="address2"  required  value="${mvo.address2 }">
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<div class="col-sm-12" style="text-align: right;">
-					  <!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
-					  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					  <input type="submit" class="btn-check" id="submitBtn" >
-					  <label class="btn btn-primary" for="submitBtn">정보변경</label>
-					  <input type="reset" class="btn-check" id="resetBtn" >
-					  <label class="btn btn-danger" for="resetBtn">다시쓰기</label>
-					  <input type="button" class="btn-check" id="cancelBtn" onclick="location.href='${pageContext.request.contextPath}'">
-					  <label class="btn btn-success" for="cancelBtn">돌아가기</label>
-				</div>
-			</div>
-		</form>
+		</div>
 	</div>
 </body>
 </html>

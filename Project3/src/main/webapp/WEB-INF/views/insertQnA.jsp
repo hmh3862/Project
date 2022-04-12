@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Q&A 새글쓰기</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
+<!--  엑시콘사용 : 다운로드받은 폴더를 넣고 CSS파일을 읽는다. -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -130,65 +133,80 @@
 	td {border: 1px solid gray; padding: 5px;}
 	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt;}
 	td.info {border:none; padding: 5px; text-align: right; }
-	td.info2 {border: 1px solid gray; padding: 5px; text-align: center; }
+	td.home {border:none; padding: 5px; text-align: left;}
 	.fileItem { margin-bottom: 3px;}
 </style>
 </head>
 <body>
 	<%-- ${cv } --%>
-	<form action="${pageContext.request.contextPath}/board/insertOkQnA" method="post" enctype="multipart/form-data" onsubmit="return formCheck();" >
-		<table id="main_content">
-			<tr>
-				<td colspan="4" class="title" >
-				Q&A 새글쓰기
-					<%-- 페이지번호, 페이지 크기, 블록크기를 숨겨서 넘긴다.  --%>
-					<input type="hidden" name="p"  value="${cv.currentPage }"/>
-					<input type="hidden" name="s"  value="${cv.pageSize }"/>
-					<input type="hidden" name="b"  value="${cv.blockSize }"/>
-				</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td> 
-					<input type="text" id="name" name="name" size="30" />
-				</td>
-				<th>비밀번호</th>
-				<td> 
-					<input type="password" id="password" name="password" size="30" />
-				</td>
-			</tr>
-			<tr>
-				<th>제목</th>
-				<td colspan="3"> 
-					<input type="text" id="subject" name="subject" size="123" />
-				</td>
-			</tr>
-			<tr>
-				<th valign="top">내용</th>
-				<td colspan="3"> 
-					<textarea name="content" id="content" cols="135" rows="7"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<th valign="top">첨부파일</th>
-				<td colspan="3"> 
-					<input type="button" value=" + " class="btn btn-primary btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
-					<input type="button" value=" - " class="btn btn-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
-					<!-- <span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span> -->
-					<br />
-					<div id="fileBox">
-						<div id="fileItem1" class="fileItem"> <input type="file" name="upfile"/></div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" class="info">
-					<input type="submit" value=" 저장하기 " class="btn btn-primary btn-sm" />
-					<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goList()"/>
-					<input type="button" value=" 홈으로 " class="btn btn-primary btn-sm" onclick="goHome()"/>
-				</td>
-			</tr>
-		</table>
-	</form>
+	<div id="mainWrapper">
+		<div class="board-container">
+			<div class="board-card" style="margin-top: 30px; margin-bottom: 30px;">
+				<div class="board-form">
+					<form action="${pageContext.request.contextPath}/board/insertOkQnA" method="post" enctype="multipart/form-data" onsubmit="return formCheck();" >
+						<table id="main_content">
+							<tr>
+								<td colspan="4" class="title" >
+								Q&A 새글쓰기
+									<%-- 페이지번호, 페이지 크기, 블록크기를 숨겨서 넘긴다.  --%>
+									<input type="hidden" name="p"  value="${cv.currentPage }"/>
+									<input type="hidden" name="s"  value="${cv.pageSize }"/>
+									<input type="hidden" name="b"  value="${cv.blockSize }"/>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="home">
+									<a href="${pageContext.request.contextPath }">
+										<i class="axi axi-home" style="font-size:30px"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<th>이름</th>
+								<td> 
+									<input type="text" id="name" name="name" size="30" />
+								</td>
+								<th>비밀번호</th>
+								<td> 
+									<input type="password" id="password" name="password" size="30" />
+								</td>
+							</tr>
+							<tr>
+								<th>제목</th>
+								<td colspan="3"> 
+									<input type="text" id="subject" name="subject" size="100%" />
+								</td>
+							</tr>
+							<tr>
+								<th valign="top">내용</th>
+								<td colspan="3"> 
+									<textarea name="content" id="content" cols="100%" rows="7"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th valign="top">첨부파일</th>
+								<td colspan="3"> 
+									<input type="button" value=" + " class="btn btn-primary btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
+									<input type="button" value=" - " class="btn btn-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
+									<!-- <span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span> -->
+									<br />
+									<div id="fileBox">
+										<div id="fileItem1" class="fileItem"> <input type="file" name="upfile"/></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4" class="info">
+									<input type="submit" value=" 저장하기 " class="btn btn-primary btn-sm" />
+									<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goList()"/>
+									<input type="button" value=" 홈으로 " class="btn btn-primary btn-sm" onclick="goHome()"/>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

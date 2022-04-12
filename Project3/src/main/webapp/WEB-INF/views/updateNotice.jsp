@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>후기게시판 수정하기</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
 <!--  엑시콘사용 : 다운로드받은 폴더를 넣고 CSS파일을 읽는다. -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
@@ -133,78 +134,94 @@
 	td {border: 1px solid gray; padding: 5px;}
 	td.title {border:none; padding: 5px; text-align: center; font-size: 18pt;}
 	td.info {border:none; padding: 5px; text-align: right; }
-	td.info2 {border: 1px solid gray; padding: 5px; text-align: center; }
+	td.home {border:none; padding: 5px; text-align: left;}
 	.fileItem { margin-bottom: 3px;}
 </style>
 </head>
 <body>
 	<%-- ${cv } --%>
-	<form action="${pageContext.request.contextPath}/board/updateOkNotice" method="post" enctype="multipart/form-data" onsubmit="return formCheck();" >
-		<table id="main_content">
-			<tr>
-				<td colspan="4" class="title" >
-				후기게시판 수정하기
-					<%-- 페이지번호, 페이지 크기, 블록크기를 숨겨서 넘긴다.  --%>
-					<input type="hidden" name="p"  value="${cv.currentPage }"/>
-					<input type="hidden" name="s"  value="${cv.pageSize }"/>
-					<input type="hidden" name="b"  value="${cv.blockSize }"/>
-					<input type="hidden" name="idx"  value="${cv.idx }"/>
-				</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td> 
-					<input type="text" id="name" name="name" size="30" value="${fv.name }" readonly="readonly"/>
-				</td>
-				<th>비밀번호</th>
-				<td> 
-					<input type="password" id="password" name="password" size="30" />
-				</td>
-			</tr>
-			<tr>
-				<th>제목</th>
-				<td colspan="3"> 
-					<input type="text" id="subject" name="subject" size="123" value="${fv.subject }" />
-				</td>
-			</tr>
-			<tr>
-				<th valign="top">내용</th>
-				<td colspan="3"> 
-					<textarea name="content" id="content" cols="135" rows="7">${fv.content }</textarea>
-				</td>
-			</tr>
-			<tr>
-				<th valign="top">첨부파일</th>
-				<td colspan="3">
-					<%-- 기존에 있던 파일들을 표시하고 삭제버튼을 눌러 삭제가 가능하게 한다. --%>
-					<c:if test="${not empty fv.fileList }">
-					<c:forEach var="fvo" items="${fv.fileList }" varStatus="vs">
-						<%-- 파일명 출력 --%>
-						<i class="axi axi-download2"></i> ${fvo.oriName } 
-						<%-- 삭제 아이콘을 표시 :  클릭시 삭제여부를 물어보고 삭제 표시를 한다. --%>
-						<i style="font-size: 15pt;color:red;cursor: pointer;" class="axi axi-delete2" onclick="deleteFile(${fvo.idx}, ${vs.count })"></i>
-						<input type="hidden" name="delfile" id="delfile${vs.count }" size="5" value="0">
-						<span id="msg${vs.count }" style="color:red;"></span>
-						<br />
-					</c:forEach>
-				</c:if>					 
-					<hr />
-					<input type="button" value=" + " class="btn btn-primary btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
-					<input type="button" value=" - " class="btn btn-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
-					<!-- <span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span> -->
-					<br />
-					<div id="fileBox">
-						<div id="fileItem1" class="fileItem"> <input type="file" name="upfile"/></div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" class="info">
-					<input type="submit" value=" 수정하기 " class="btn btn-primary btn-sm" />
-					<input type="button" value=" 돌아가기 " class="btn btn-success btn-sm" onclick="goBack()"/>
-				</td>
-			</tr>
-		</table>
-	</form>
+	<div id="mainWrapper">
+		<div class="board-container">
+			<div class="board-card" style="margin-top: 30px; margin-bottom: 30px;">
+				<div class="board-form">
+					<form action="${pageContext.request.contextPath}/board/updateOkNotice" method="post" enctype="multipart/form-data" onsubmit="return formCheck();" >
+						<table id="main_content">
+							<tr>
+								<td colspan="4" class="title" >
+								후기게시판 수정하기
+									<%-- 페이지번호, 페이지 크기, 블록크기를 숨겨서 넘긴다.  --%>
+									<input type="hidden" name="p"  value="${cv.currentPage }"/>
+									<input type="hidden" name="s"  value="${cv.pageSize }"/>
+									<input type="hidden" name="b"  value="${cv.blockSize }"/>
+									<input type="hidden" name="idx"  value="${cv.idx }"/>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="home">
+									<a href="${pageContext.request.contextPath }">
+										<i class="axi axi-home" style="font-size:30px"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<th>이름</th>
+								<td> 
+									<input type="text" id="name" name="name" size="30" value="${fv.name }" readonly="readonly"/>
+								</td>
+								<th>비밀번호</th>
+								<td> 
+									<input type="password" id="password" name="password" size="30" />
+								</td>
+							</tr>
+							<tr>
+								<th>제목</th>
+								<td colspan="3"> 
+									<input type="text" id="subject" name="subject" size="100%" value="${fv.subject }" />
+								</td>
+							</tr>
+							<tr>
+								<th valign="top">내용</th>
+								<td colspan="3"> 
+									<textarea name="content" id="content" cols="100%" rows="7">${fv.content }</textarea>
+								</td>
+							</tr>
+							<tr>
+								<th valign="top">첨부파일</th>
+								<td colspan="3">
+									<%-- 기존에 있던 파일들을 표시하고 삭제버튼을 눌러 삭제가 가능하게 한다. --%>
+									<c:if test="${not empty fv.fileList }">
+									<c:forEach var="fvo" items="${fv.fileList }" varStatus="vs">
+										<%-- 파일명 출력 --%>
+										<i class="axi axi-download2"></i> ${fvo.oriName } 
+										<%-- 삭제 아이콘을 표시 :  클릭시 삭제여부를 물어보고 삭제 표시를 한다. --%>
+										<i style="font-size: 15pt;color:red;cursor: pointer;" class="axi axi-delete2" 
+											onclick="deleteFile(${fvo.idx}, ${vs.count })"></i>
+										<input type="hidden" name="delfile" id="delfile${vs.count }" size="5" value="0">
+										<span id="msg${vs.count }" style="color:red;"></span>
+										<br />
+									</c:forEach>
+								</c:if>					 
+									<hr />
+									<input type="button" value=" + " class="btn btn-primary btn-sm" style="margin-bottom: 5px;" onclick="addFile();"/>
+									<input type="button" value=" - " class="btn btn-danger btn-sm" style="margin-bottom: 5px;" onclick="removeFile();"/>
+									<!-- <span style="color:red;font-size: 9pt;">※ 이미지는 내용에 직접 첨부하세요!!!</span> -->
+									<br />
+									<div id="fileBox">
+										<div id="fileItem1" class="fileItem"> <input type="file" name="upfile"/></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4" class="info">
+									<input type="submit" value=" 수정하기 " class="btn btn-primary btn-sm" />
+									<input type="button" value=" 돌아가기 " class="btn btn-success btn-sm" onclick="goBack()"/>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Q&A 내용보기</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
 <!--  엑시콘사용 : 다운로드받은 폴더를 넣고 CSS파일을 읽는다. -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
@@ -284,95 +285,102 @@
 </style>
 </head>
 <body>
-<div class="container" style="border: 1px solid gray; padding: 30px; margin-top: 30px; margin-bottom: 30px; border-radius: 30px;">
-	<table id="main_content">
-		<tr>
-			<td colspan="4" class="title" >Q&A 내용보기</td>
-		</tr>
-		<tr>
-			<td colspan="2" class="home">
-				<a href="${pageContext.request.contextPath }">
-					<i class="axi axi-home" style="font-size:30px"></i>
-				</a>
-			</td>
-		</tr>
-		<tr>
-			<th>이름</th>
-			<td> 
-				<c:out value="${fv.name }"></c:out>
-			</td>
-			<th>작성일(ip)</th>
-			<td> 
-				<fmt:formatDate value="${fv.regDate }" pattern="yyyy년 MM월 dd일(E) hh:mm:ss"/>
-				(${fv.ip })
-			</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td colspan="3"> 
-				<c:out value="${fv.subject }"></c:out>
-			</td>
-		</tr>
-		<tr>
-			<th valign="top">내용</th>
-			<td colspan="3"> 
-				<div id="content">${fv.content }</div>
-			</td>
-		</tr>
-		<tr>
-			<th valign="top">첨부파일</th>
-			<td colspan="3"> 
-				<%-- 첨부파일을 다운 받도록 링크를 달아준다. --%>
-				<c:if test="${not empty fv.fileList }">
-					<c:forEach var="fvo" items="${fv.fileList }">
-						<c:url var="url" value="/board/download">
-							<c:param name="of" value="${fvo.oriName }"></c:param>
-							<c:param name="sf" value="${fvo.saveName }"></c:param>
-						</c:url>
-						<a href="${url }" title="${fvo.oriName }"><i class="axi axi-download2"></i> ${fvo.oriName }</a><br />
-					</c:forEach>
-				</c:if>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="4" class="info">
-				<input type="button" value=" 수정하기 " class="btn btn-primary btn-sm" onclick="goUpdate()"/>
-				<input type="button" value=" 삭제하기 " class="btn btn-danger btn-sm" onclick="goDelete()"/>
-				<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goBack()"/>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="4" style="border: none;">
-				<input type="hidden" name="idx" id="idx" value="0" /> 
-				<input type="hidden" name="ref" id="ref" value="${fv.idx }" /> 
-				<br /> 
-				<div style="border: none; padding:5px;text-align: left; color: red; font-size: 20px;">
-				※ 관리자만 댓글 작성이 가능합니다.
-				</div>
-				<input type="text" name="name" id="name" placeholder="이름 입력" required="required" /> 
-				<input type="password" name="password" id="password" placeholder="비밀번호 입력" required="required" style="margin-bottom: 5px;" /> 
-				<br /> 
-				<textarea name="content" id="comment_content" cols="140" rows="5" placeholder="내용 입력" required="required"></textarea>
-				<div style="text-align: right;;;;;; margin-top: 5px;">
-					<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
-						<button id="submitBtn" class="btn btn-primary btn-sm" onclick="buttonComment()">저장</button>
-						<button id="cancelBtn" style="display: none;" class="btn btn-outline-danger btn-sm" onclick="resetComment()">취소</button>
-					</c:if>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="4" style="border: none;">
-				<div id="commentBox">
-					<c:if test="${empty vo.commentList }">
-						<div style="border: 1px solid gray; padding:5px;text-align: center;">
-						등록된 댓글이 없습니다.
-						</div>
-					</c:if> 
-				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+	<div id="mainWrapper">
+		<div class="board-container">
+			<div class="board-card" style="margin-top: 30px; margin-bottom: 30px;">
+				<table id="main_content">
+					<tr>
+						<td colspan="4" class="title" >Q&A 내용보기</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="home">
+							<a href="${pageContext.request.contextPath }">
+								<i class="axi axi-home" style="font-size:30px"></i>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td> 
+							<c:out value="${fv.name }"></c:out>
+						</td>
+						<th>작성일(ip)</th>
+						<td> 
+							<fmt:formatDate value="${fv.regDate }" pattern="yyyy년 MM월 dd일(E) hh:mm:ss"/>
+							(${fv.ip })
+						</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td colspan="3"> 
+							<c:out value="${fv.subject }"></c:out>
+						</td>
+					</tr>
+					<tr>
+						<th valign="top">내용</th>
+						<td colspan="3"> 
+							<div id="content">${fv.content }</div>
+						</td>
+					</tr>
+					<tr>
+						<th valign="top">첨부파일</th>
+						<td colspan="3"> 
+							<%-- 첨부파일을 다운 받도록 링크를 달아준다. --%>
+							<c:if test="${not empty fv.fileList }">
+								<c:forEach var="fvo" items="${fv.fileList }">
+									<c:url var="url" value="/board/download">
+										<c:param name="of" value="${fvo.oriName }"></c:param>
+										<c:param name="sf" value="${fvo.saveName }"></c:param>
+									</c:url>
+									<a href="${url }" title="${fvo.oriName }"><i class="axi axi-download2"></i> ${fvo.oriName }</a><br />
+								</c:forEach>
+							</c:if>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" class="info">
+							<input type="button" value=" 수정하기 " class="btn btn-primary btn-sm" onclick="goUpdate()"/>
+							<input type="button" value=" 삭제하기 " class="btn btn-danger btn-sm" onclick="goDelete()"/>
+							<input type="button" value=" 목록보기 " class="btn btn-success btn-sm" onclick="goBack()"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" style="border: none;">
+							<input type="hidden" name="idx" id="idx" value="0" /> 
+							<input type="hidden" name="ref" id="ref" value="${fv.idx }" /> 
+							<br /> 
+							<div style="border: none; padding:5px;text-align: left; color: red; font-size: 20px; font-weight: bold;">
+							※ 관리자만 댓글 작성이 가능합니다.
+							</div>
+							<input type="text" name="name" id="name" placeholder="이름 입력" required="required" /> 
+							<input type="password" name="password" id="password" placeholder="비밀번호 입력" required="required" style="margin-bottom: 5px;" /> 
+							&nbsp;
+							<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
+								<button id="submitBtn" class="btn btn-primary btn-sm" onclick="buttonComment()">저장</button>
+							</c:if>
+							<br /> 
+							<textarea name="content" id="comment_content" cols="100%" rows="5" placeholder="내용 입력" required="required"></textarea>
+							<div style="text-align: right; margin-top: 5px;">
+								<c:if test="${mvo.userid=='admin' || mvo.userid=='root' || mvo.userid=='master' || mvo.userid=='webmaster' || mvo.userid=='administrator'}">
+									<button id="cancelBtn" style="display: none;" class="btn btn-outline-danger btn-sm" onclick="resetComment()">취소</button>
+								</c:if>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" style="border: none;">
+							<div id="commentBox">
+								<c:if test="${empty vo.commentList }">
+									<div style="border: 1px solid gray; padding:5px;text-align: center;">
+									등록된 댓글이 없습니다.
+									</div>
+								</c:if> 
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

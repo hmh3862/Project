@@ -24,25 +24,23 @@
 						</c:if>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="username">
-							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
-							</label> <input type="text" class="form-control"
-								id="username" name="userid" placeholder="사용자 아이디 입력" required>
+								<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
+							</label> 
+							<input type="text" class="form-control" id="username" name="userid" placeholder="사용자 아이디 입력" required>
 						</div>
 						<div class="input-group input-sm">
-							<label class="input-group-addon" for="password"><i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:green;"></i></label> <input type="password"
-								class="form-control" id="password" name="password"
-								placeholder="비밀번호 입력" required>
+							<label class="input-group-addon" for="password">
+								<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i>
+							</label> 
+							<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 입력" required>
 						</div>
 						<div class="input-group input-sm" style="margin-bottom: 15px;">
 							<textarea name="content" id="content" cols="70" rows="10" required placeholder="탈퇴 이유를 남겨주세요"></textarea>
 						</div>
 						<!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<div class="form-actions">
-							<input type="submit"
-								class="btn btn-block btn-warning btn-default" value="회원 탈퇴">
+							<input type="submit" class="btn btn-block btn-danger btn-default" value="회원 탈퇴">
 						</div>
 						<div style="text-align: center;margin: 15px;">
 							[<a href="${pageContext.request.contextPath }">홈으로</a>]
