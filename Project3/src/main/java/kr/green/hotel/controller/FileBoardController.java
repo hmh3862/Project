@@ -40,7 +40,7 @@ public class FileBoardController {
 	private FileBoardService fileBoardService;
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/board/list")
+	@RequestMapping(value = "/board/listBoard")
 	// public String selectList(@ModelAttribute CommVO commVO, Model model) {
 	// POST전송을 받기위한 방법
 	public String selectList(@RequestParam Map<String, String> params, HttpServletRequest request,@ModelAttribute CommVO commVO, Model model) {
@@ -56,7 +56,7 @@ public class FileBoardController {
 		PagingVO<FileBoardVO> pv = fileBoardService.selectList(commVO);
 		model.addAttribute("pv", pv);
 		model.addAttribute("cv", commVO);
-		return "list";
+		return "listBoard";
 	}
 	// 입력폼 띄우기
 	@RequestMapping(value = "/board/insertBoard")
@@ -67,7 +67,7 @@ public class FileBoardController {
 	// 저장하기
 	@RequestMapping(value = "/board/insertOk", method = RequestMethod.GET)
 	public String insertOkGet() {
-		return "redirect:/board/list";
+		return "redirect:/board/listBoard";
 	}
 	@RequestMapping(value = "/board/insertOk", method = RequestMethod.POST)
 	public String insertOkPost(
@@ -120,12 +120,12 @@ public class FileBoardController {
 		map.put("s", commVO.getPageSize() + "");
 		map.put("b",commVO.getBlockSize() + "");
 		redirectAttributes.addFlashAttribute("map", map);
-		return "redirect:/board/list";
+		return "redirect:/board/listBoard";
 	}
 	
 	// 내용보기 : 글 1개를 읽어서 보여준다
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/board/view")
+	@RequestMapping(value = "/board/viewBoard")
 	public String view(@RequestParam Map<String, String> params, HttpServletRequest request,@ModelAttribute CommVO commVO,Model model) {
 		log.info("{}의 view호출 : {}", this.getClass().getName(), commVO);
 		// POST전송된것을 받으려면 RequestContextUtils.getInputFlashMap(request)로 맵이 존재하는지 판단해서
@@ -143,24 +143,24 @@ public class FileBoardController {
 
 		model.addAttribute("fv", fileBoardVO);
 		model.addAttribute("cv", commVO);
-		return "view";
+		return "viewBoard";
 	}
 	// 수정하기
-	@RequestMapping(value = "/board/update",method = RequestMethod.GET)
+	@RequestMapping(value = "/board/updateBoard",method = RequestMethod.GET)
 	public String updateGet(@ModelAttribute CommVO commVO,Model model) {
-		return "redirect:/board/list";
+		return "redirect:/board/listBoard";
 	}
-	@RequestMapping(value = "/board/update",method = RequestMethod.POST)
+	@RequestMapping(value = "/board/updateBoard",method = RequestMethod.POST)
 	public String updatePost(@ModelAttribute CommVO commVO,Model model) {
 		FileBoardVO fileBoardVO = fileBoardService.selectByIdx(commVO.getIdx());
 		model.addAttribute("fv", fileBoardVO);
 		model.addAttribute("cv", commVO);
-		return "update";
+		return "updateBoard";
 	}
 	
 	@RequestMapping(value = "/board/updateOk",method = RequestMethod.GET)
 	public String updateOkGet(@ModelAttribute CommVO commVO,Model model) {
-		return "redirect:/board/list";
+		return "redirect:/board/listBoard";
 	}
 	@RequestMapping(value = "/board/updateOk",method = RequestMethod.POST)
 	public String updateOkPost(@ModelAttribute CommVO commVO,
@@ -215,25 +215,25 @@ public class FileBoardController {
 		map.put("b",commVO.getBlockSize() + "");
 		map.put("idx",commVO.getIdx() + "");
 		redirectAttributes.addFlashAttribute("map", map);
-		return "redirect:/board/view";
+		return "redirect:/board/viewBoard";
 	}
 	
 	// 삭제하기
-	@RequestMapping(value = "/board/delete",method = RequestMethod.GET)
+	@RequestMapping(value = "/board/deleteBoard",method = RequestMethod.GET)
 	public String deleteGet(@ModelAttribute CommVO commVO,Model model) {
-		return "redirect:/board/list";
+		return "redirect:/board/listBoard";
 	}
-	@RequestMapping(value = "/board/delete",method = RequestMethod.POST)
+	@RequestMapping(value = "/board/deleteBoard",method = RequestMethod.POST)
 	public String deletePost(@ModelAttribute CommVO commVO,Model model) {
 		FileBoardVO fileBoardVO = fileBoardService.selectByIdx(commVO.getIdx());
 		model.addAttribute("fv", fileBoardVO);
 		model.addAttribute("cv", commVO);
-		return "delete";
+		return "deleteBoard";
 	}
 
 	@RequestMapping(value = "/board/deleteOk",method = RequestMethod.GET)
 	public String deleteOkGet(@ModelAttribute CommVO commVO,Model model) {
-		return "redirect:/board/list";
+		return "redirect:/board/listBoard";
 	}
 	@RequestMapping(value = "/board/deleteOk",method = RequestMethod.POST)
 	public String deleteOkPost(@ModelAttribute CommVO commVO,
@@ -256,7 +256,7 @@ public class FileBoardController {
 		map.put("s", commVO.getPageSize() + "");
 		map.put("b",commVO.getBlockSize() + "");
 		redirectAttributes.addFlashAttribute("map", map);
-		return "redirect:/board/list";
+		return "redirect:/board/listBoard";
 	}
 
 	@RequestMapping(value = "/board/download")

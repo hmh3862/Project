@@ -168,7 +168,7 @@
 			<div style="text-align: center;">
 				<ul>
 					<li><a style="font-size: 14pt;" href="board/listNotice">공지사항</a></li>
-					<li><a style="font-size: 14pt;" href="board/list">후기게시판</a></li>
+					<li><a style="font-size: 14pt;" href="board/listBoard">후기게시판</a></li>
 					<li><a style="font-size: 14pt;" href="board/listFree">자유게시판</a></li>
 					<li><a style="font-size: 14pt;" href="board/listQnA">Q&A</a></li>
 				</ul>

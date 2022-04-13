@@ -58,7 +58,7 @@
 								$(function(){
 									$("#listCount").change(function(){
 										var pageSize = $(this).val();
-										SendPost("${pageContext.request.contextPath }/board/list", {"p":${cv.currentPage},"s":pageSize,"b":${cv.blockSize}});
+										SendPost("${pageContext.request.contextPath }/board/listBoard", {"p":${cv.currentPage},"s":pageSize,"b":${cv.blockSize}});
 									});	
 								});
 							</script>
@@ -93,7 +93,7 @@
 									<c:set var="no" value="${no - 1 }"/>
 								</td>	
 								<td align="left" >
-									<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/view",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'>
+									<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/viewBoard",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'>
 										<c:out value="${vo.subject }"></c:out>
 									</a>
 									<%-- 댓글의 개수 출력 --%>

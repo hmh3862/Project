@@ -24,10 +24,10 @@
 	$(function(){
 		$('#content').summernote(
 			{
-				lang : 'ko-KR', // default: 'en-US'
-				height : 200, // set editor height
-				minHeight : null, // set minimum height of editor
-				maxHeight : null, // set maximum height of editor
+				lang : 'ko-KR', 
+				height : 200, 
+				minHeight : null, 
+				maxHeight : null, 
 				fontNames : [ '맑은고딕', 'Arial', 'Arial Black',
 						'Comic Sans MS', 'Courier New', ],
 				fontNamesIgnoreCheck : [ '맑은고딕' ],

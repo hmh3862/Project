@@ -83,7 +83,7 @@
 	//-----------------------------------------------------------------------------------------------------------
 	// 돌아가기 버튼 클릭시 사용할 함수
 	function goBack(){
-		SendPost("${pageContext.request.contextPath}/board/view", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
+		SendPost("${pageContext.request.contextPath}/board/viewBoard", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
 	}
 	// 폼의 값 유효성 검사하기 스크립트
 	function formCheck(){

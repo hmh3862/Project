@@ -68,7 +68,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		<!-- 자신의 DB에 맞는 DB프라이버 추가 -->
+		<!-- 맞는 DB 드라이버 추가 -->
 		<!-- 마리아 디비 -->
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
@@ -187,7 +187,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
-		<!-- 셈네일을 사용하려면 추가 -->
+		<!-- 섬네일 사용 -->
 		<dependency>
 			<groupId>org.imgscalr</groupId>
 			<artifactId>imgscalr-lib</artifactId>

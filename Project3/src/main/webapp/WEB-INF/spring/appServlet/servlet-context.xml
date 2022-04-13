@@ -44,7 +44,7 @@
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0"/>
 	</beans:bean>
-	<!-- 실제 다운로드를 진행할 클래스 : jsp의 download.jsp를 참조 AbstractView을 상속받아 만들면된다. -->
+	<!-- 실제 다운로드를 진행할 클래스 -->
 	<beans:bean id="downloadView" class="kr.green.hotel.controller.FileDownloadView"/>
 	<!-- 다운로드 객체 등록 종료 -->
 	<!-- ********************************************************************************** -->

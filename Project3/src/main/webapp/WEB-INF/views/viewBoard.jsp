@@ -24,10 +24,10 @@
 	$(function(){
 		$('#content').summernote(
 			{
-				lang : 'ko-KR', // default: 'en-US'
-				height : 200, // set editor height
-				minHeight : null, // set minimum height of editor
-				maxHeight : null, // set maximum height of editor
+				lang : 'ko-KR', 
+				height : 200,
+				minHeight : null, 
+				maxHeight : null, 
 				fontNames : [ '맑은고딕', 'Arial', 'Arial Black',
 						'Comic Sans MS', 'Courier New', ],
 				fontNamesIgnoreCheck : [ '맑은고딕' ],
@@ -78,13 +78,13 @@
 	//-----------------------------------------------------------------------------------------------------------
 	// 돌아가기 버튼 클릭시 사용할 함수
 	function goBack(){
-		SendPost("${pageContext.request.contextPath}/board/list", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize}});
+		SendPost("${pageContext.request.contextPath}/board/listBoard", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize}});
 	}
 	function goUpdate(){
-		SendPost("${pageContext.request.contextPath}/board/update", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
+		SendPost("${pageContext.request.contextPath}/board/updateBoard", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
 	}
 	function goDelete(){
-		SendPost("${pageContext.request.contextPath}/board/delete", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
+		SendPost("${pageContext.request.contextPath}/board/deleteBoard", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
 	}
 
 	// 댓글
