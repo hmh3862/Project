@@ -20,16 +20,9 @@
 <script src="${pageContext.request.contextPath}/resources/js/comm.js"></script>
 <script>
 	$(function (){
-	// $(function goWrite(){
-			// if(${member_role}=='ROLE_ADMIN'){
-				// SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")
-			// }else{
-				// alert("글쓰기 권한이 없습니다.");
-			// }
-			
-			// SendPost("${pageContext.request.contextPath }/board/insertNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize }},"post")
-		// }
+		
 	});
+	// 홈으로
 	function goHome(){
 		SendPost("${pageContext.request.contextPath }");
 	}
@@ -103,11 +96,11 @@
 									<a href="#" onclick='SendPost("${pageContext.request.contextPath }/board/viewNotice",{"p":${pv.currentPage },"s":${pv.pageSize },"b":${pv.blockSize },"idx":${vo.idx },"m":"view","h":"true"},"post")'>
 										<c:out value="${vo.subject }"></c:out>
 									</a>
-									<%-- 댓글의 개수를 출력해 주자 --%>
+									<%-- 댓글의 개수 출력 --%>
 									<c:if test="${vo.noticeCommentCount>0 }">
 										- [${vo.noticeCommentCount }]
 									</c:if>
-									<%-- 오늘 저장한 글이면 new 아이콘을 달아보자  --%>		
+									<%-- 오늘 저장한 글이면 new 아이콘 --%>		
 									<jsp:useBean id="today" scope="request" class="java.util.Date"></jsp:useBean>				
 									<fmt:formatDate value="${today }" pattern="yyyyMMdd" var="day"/> 
 									<fmt:formatDate value="${vo.regDate }" pattern="yyyyMMdd" var="reg"/> 
@@ -122,7 +115,7 @@
 									<fmt:formatDate value="${vo.regDate }" type="date" dateStyle="short"/>
 								</td>
 								<td>
-									<%-- 첨부파일을 다운 받도록 링크를 달아준다. --%>
+									<%-- 첨부파일을 다운 받도록 링크 --%>
 									<c:if test="${not empty vo.fileList }">
 										<c:forEach var="fvo" items="${vo.fileList }">
 											<c:url var="url" value="/board/download">

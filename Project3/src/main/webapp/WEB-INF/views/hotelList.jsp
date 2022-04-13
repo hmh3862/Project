@@ -20,18 +20,6 @@
 	<header>
 		<h2>지역별 상세</h2>
 	</header>
-		<!-- <tr>
-	<table id="content">
-			<td colspan="5" class="title">지역별 상세</td>
-		</tr> -->
-		<!-- 
-		<c:if test="${not empty list}">
-			<c:forEach var="hotel" items="${list }">
-				${hotel.SIGUN_NM } : ${hotel.BIZPLC_NM } / ${hotel.LOCPLC_FACLT_TELNO_DTLS } / ${hotel.ROADNM_ZIPNO } / ${hotel.REFINE_ROADNM_ADDR }<br />
-			</c:forEach>
-		</c:if>
-	</table>
-		 -->
 	<table id="content" class="table">
 		<c:if test="${not empty list}">
 			<thead>

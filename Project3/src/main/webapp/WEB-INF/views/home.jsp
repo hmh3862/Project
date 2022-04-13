@@ -41,15 +41,6 @@
 				</header>
 			</article>
 			
-			<!-- Search 
-			<section class="box search">
-				<form method="post" action="#">
-					<input type="text" class="text" name="search" placeholder="어디로 떠나시나요? 여기 또는 아래 지도 클릭으로 지역별 상세 정보를 확인하세요." 
-						onclick="location.href='/hotel/hotelList'"/>
-				</form>
-			</section>
-			-->
-			
 			<div class="s_map" style="width:668px;border:0px;height:400px;padding:6px;background-image: url(./resources/images/map/map_bg.png)">
 				<p class="map_l">
 					<img src="./resources/images/map/map03.gif" alt="전국지도" usemap="#Map" border="0">
@@ -76,12 +67,7 @@
 						<area shape="poly" coords="57,353,70,366,99,363,111,355,110,346,100,339,70,343" key="map18" tourcode="39" img="./resources/images/map/map18.gif" href="javascript:void(0);" onfocus="blur();" area="제주도" alt="제주도" title="제주도">
 					</map>
 				</p>
-				<!-- 선택 된 지도 -->
-				<!-- 서울
-				<p class="map_r">
-					<img src="/resources/images/map/m001s.png" alt="서울특별시" usemap="#Map_Detail" border="0" style="display: inline;"><map name="Map_Detail" id="Map_Detail"><area shape="poly" code="4" coords="57,161,33,203,68,213,73,207,83,220,92,219,96,206,100,201" href="javascript:void(0);" onfocus="blur();" area="서울특별시||강서구" alt="강서구" selimg="/img/sub/m001o_12.png" title="강서구"><area shape="poly" code="19" coords="71,213,69,238,79,241,91,236,98,242,111,221,107,210,99,209,95,219,85,224" href="javascript:void(0);" onfocus="blur();" area="서울특별시||양천구" alt="양천구" selimg="/img/sub/m001o_11.png" title="양천구"><area shape="poly" code="7" coords="63,250,65,266,85,266,97,252,105,256,117,262,115,252,108,236,100,244,89,240,78,245,69,243" href="javascript:void(0);" onfocus="blur();" area="서울특별시||구로구" alt="구로구" selimg="/img/sub/m001o_9.png" title="구로구"><area shape="poly" code="8" coords="101,259,99,277,114,285,122,299,137,289,128,278,128,272,124,263,111,264" href="javascript:void(0);" onfocus="blur();" area="서울특별시||금천구" alt="금천구" selimg="/img/sub/m001o_8.png" title="금천구"><area shape="poly" code="5" coords="126,260,131,279,144,297,159,294,177,279,171,267,159,267,159,255,142,254" href="javascript:void(0);" onfocus="blur();" area="서울특별시||관악구" alt="관악구" selimg="/img/sub/m001o_7.png" title="관악구"><area shape="poly" code="12" coords="123,258,140,252,151,253,161,254,171,266,172,249,165,238,151,234,141,236" href="javascript:void(0);" onfocus="blur();" area="서울특별시||동작구" alt="동작구" selimg="/img/sub/m001o_6.png" title="동작구"><area shape="poly" code="15" coords="175,266,179,276,196,282,206,277,216,300,238,292,238,271,218,276,209,262,197,251,194,232,174,246" href="javascript:void(0);" onfocus="blur();" area="서울특별시||서초구" alt="서초구" selimg="/img/sub/m001o_5.png" title="서초구"><area shape="poly" code="1" coords="196,229,212,259,217,271,239,268,245,280,261,274,246,253,226,250,226,234,206,222" href="javascript:void(0);" onfocus="blur();" area="서울특별시||강남구" alt="강남구" selimg="/img/sub/m001o_4.png" title="강남구"><area shape="poly" code="18" coords="229,233,233,247,258,260,263,273,286,254,284,246,274,244,275,235,260,226,255,221" href="javascript:void(0);" onfocus="blur();" area="서울특별시||송파구" alt="송파구" selimg="/img/sub/m001o_3.png" title="송파구"><area shape="poly" code="2" coords="259,214,262,225,276,233,288,214,300,210,296,186,271,194,261,199" href="javascript:void(0);" onfocus="blur();" area="서울특별시||강동구" alt="강동구" selimg="/img/sub/m001o_1.png" title="강동구"><area shape="poly" code="6" coords="222,222,237,225,255,210,250,200,248,192,236,192" href="javascript:void(0);" onfocus="blur();" area="서울특별시||광진구" alt="광진구" selimg="/img/sub/m001o_2.png" title="광진구"><area shape="poly" code="16" coords="190,211,195,216,209,214,218,220,229,201,220,198,211,190,201,190,201,201" href="javascript:void(0);" onfocus="blur();" area="서울특별시||성동구" alt="성동구" selimg="/img/sub/m001o_16.png" title="성동구"><area shape="poly" code="14" coords="115,178,133,193,141,200,159,200,162,198,154,185,155,178,125,177" href="javascript:void(0);" onfocus="blur();" area="서울특별시||서대문구" alt="서대문구" selimg="/img/sub/m001o_20.png" title="서대문구"><area shape="poly" code="22" coords="117,174,122,142,126,133,151,119,158,131,159,140,150,146,151,159,145,163,145,167,134,175" href="javascript:void(0);" onfocus="blur();" area="서울특별시||은평구" alt="은평구" selimg="/img/sub/m001o_22.png" title="은평구"><area shape="poly" code="10" coords="190,99,196,108,194,113,195,126,207,124,212,135,218,128,219,107,215,96,196,86" href="javascript:void(0);" onfocus="blur();" area="서울특별시||도봉구" alt="도봉구" selimg="/img/sub/m001o_25.png" title="도봉구"><area shape="poly" code="9" coords="213,140,228,153,252,148,256,136,257,125,244,122,245,96,235,89,218,96,222,106,222,123" href="javascript:void(0);" onfocus="blur();" area="서울특별시||노원구" alt="노원구" selimg="/img/sub/m001o_19.png" title="노원구"><area shape="poly" code="25" coords="231,156,232,175,236,188,248,190,267,169,267,163,258,151" href="javascript:void(0);" onfocus="blur();" area="서울특별시||중랑구" alt="중랑구" selimg="/img/sub/m001o_18.png" title="중랑구"><area shape="poly" code="11" coords="227,162,198,182,198,187,212,189,230,198,234,191" href="javascript:void(0);" onfocus="blur();" area="서울특별시||동대문구" alt="동대문구" selimg="/img/sub/m001o_17.png" title="동대문구"><area shape="poly" code="3" coords="182,100,172,121,173,136,198,156,213,148,206,136,204,130,192,128,192,107" href="javascript:void(0);" onfocus="blur();" area="서울특별시||강북구" alt="강북구" selimg="/img/sub/m001o_24.png" title="강북구"><area shape="poly" code="23" coords="168,141,156,146,152,152,152,164,144,172,158,176,163,191,195,189,181,175,168,169,174,161" href="javascript:void(0);" onfocus="blur();" area="서울특별시||종로구" alt="종로구" selimg="/img/sub/m001o_21.png" title="종로구"><area shape="poly" code="17" coords="173,140,177,161,176,170,187,172,197,181,216,164,227,160,218,151,210,158,195,161" href="javascript:void(0);" onfocus="blur();" area="서울특별시||성북구" alt="성북구" selimg="/img/sub/m001o_23.png" title="성북구"><area shape="poly" code="24" coords="165,193,163,202,181,209,196,203,198,192" href="javascript:void(0);" onfocus="blur();" area="서울특별시||중구" alt="중구" selimg="/img/sub/m001o_15.png" title="중구"><area shape="poly" code="13" coords="107,174,121,187,129,193,138,200,146,202,158,201,159,206,151,216,135,211,114,202,97,188" href="javascript:void(0);" onfocus="blur();" area="서울특별시||마포구" alt="마포구" selimg="/img/sub/m001o_13.png" title="마포구"><area shape="poly" code="21" coords="161,204,152,217,156,230,170,238,190,219,183,212" href="javascript:void(0);" onfocus="blur();" area="서울특별시||용산구" alt="용산구" selimg="/img/sub/m001o_14.png" title="용산구"><area shape="poly" code="20" coords="113,212,110,229,111,238,121,253,146,231,140,218" href="javascript:void(0);" onfocus="blur();" area="서울특별시||영등포구" alt="영등포구" selimg="/img/sub/m001o_10.png" title="영등포구"></map></p>
-				 -->
-				 <!-- 경기도 -->
+				<!-- 경기도 -->
 				<p class="map_r">
 					<img src="./resources/images/map/${img }.png" alt="경기도" usemap="#Map_Detail" border="0" style="display: inline;"> 
 					<!-- <img src="./resources/images/map/m008s.png" alt="경기도" usemap="#Map_Detail" border="0" style="display: inline;">  -->
@@ -120,7 +106,6 @@
 					</map>
 				</p>
 			</div>
-			<!-- <img src="./resources/images/ggmap2.png" onclick="location.href='/hotel/hotelList'"/> -->
 		</div>
 		<!-- 여기에 리스트 출력 -->
 		<div style="width: 100%;">
@@ -155,7 +140,6 @@
 		<!-- Logo -->
 		<!-- 세션의 회원정보 : ${mvo } -->
 		<h1 id="logo"><a>현재 사용자 : ${user }</a></h1>
-		
 		<!-- POST로 로그아웃 -->
 		<br />
 		<c:if test='${pageContext.request.userPrincipal.name !=null }'>
@@ -179,7 +163,6 @@
 				[<a style="text-decoration: none;" href="${pageContext.request.contextPath }/login">로그인</a>]
 			</c:if>
 		</div>
-		
 		<!-- Nav -->
 		<nav id="nav">
 			<div style="text-align: center;">

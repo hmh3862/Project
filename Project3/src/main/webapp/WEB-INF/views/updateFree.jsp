@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>자유게시판 수정하기</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/app.css" />
-<!--  엑시콘사용 : 다운로드받은 폴더를 넣고 CSS파일을 읽는다. -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/axicon/axicon.min.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -23,23 +22,23 @@
 <script>
 	$(function(){
 		$('#content').summernote(
-				{
-					lang : 'ko-KR', // default: 'en-US'
-					height : 200, // set editor height
-					minHeight : null, // set minimum height of editor
-					maxHeight : null, // set maximum height of editor
-					fontNames : [ '맑은고딕', 'Arial', 'Arial Black',
-							'Comic Sans MS', 'Courier New', ],
-					fontNamesIgnoreCheck : [ '맑은고딕' ],
-					focus : true,
-					callbacks : {
-						onImageUpload : function(files, editor, welEditable) {
-							for (var i = files.length - 1; i >= 0; i--) {
-								sendFile(files[i], this);
-							}
+			{
+				lang : 'ko-KR', 
+				height : 200, 
+				minHeight : null, 
+				maxHeight : null, 
+				fontNames : [ '맑은고딕', 'Arial', 'Arial Black',
+						'Comic Sans MS', 'Courier New', ],
+				fontNamesIgnoreCheck : [ '맑은고딕' ],
+				focus : true,
+				callbacks : {
+					onImageUpload : function(files, editor, welEditable) {
+						for (var i = files.length - 1; i >= 0; i--) {
+							sendFile(files[i], this);
 						}
 					}
-				});
+				}
+			});
 	});
 	function sendFile(file, el) {
 		var form_data = new FormData();
@@ -82,7 +81,7 @@
 		fileCount--;
 	}
 	//-----------------------------------------------------------------------------------------------------------
-	// 돌아가기버튼 클릭시 사용할 함수
+	// 돌아가기 버튼 클릭시 사용할 함수
 	function goBack(){
 		SendPost("${pageContext.request.contextPath}/board/viewFree", {"p":${cv.currentPage},"s":${cv.pageSize},"b":${cv.blockSize},"idx":${cv.idx}});
 	}

@@ -25,12 +25,14 @@
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="userid">
 								<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
-							</label> <input type="text" class="form-control" id="userid" name="userid" placeholder="사용자 아이디 입력" required>
+							</label> 
+							<input type="text" class="form-control" id="userid" name="userid" placeholder="사용자 아이디 입력" required>
 						</div>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="hp">
 								<i class="fa-solid fa-square-phone" style="font-size: 20pt;margin-right: 5px;color:red;"></i>
-							</label> <input type="tel"	class="form-control" id="hp" name="hp" placeholder="전화번호 입력" required>
+							</label> 
+							<input type="tel"	class="form-control" id="hp" name="hp" placeholder="전화번호 입력" required>
 						</div>
 						<!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

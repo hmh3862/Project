@@ -16,7 +16,6 @@
 			<h2 style="color:red;">${username }님은 이 페이지에 접근 권한이 없습니다.</h2>
 		</c:otherwise>
 	</c:choose>
-	
 	<a href="${pageContext.request.contextPath }">홈으로</a>
 </body>
 </html>

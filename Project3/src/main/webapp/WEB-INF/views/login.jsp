@@ -26,22 +26,22 @@
 						<c:if test="${not empty msg }">
 							<div style="color: blue;font-size: 15pt;">${msg }</div>
 						</c:if>
-						
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="username">
-							<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i></label>
+								<i class="fa-solid fa-user" style="font-size: 20pt;margin-right: 5px;color:blue;"></i>
+							</label>
 							<input type="text" class="form-control" id="username" name="userid" 
 								placeholder="사용자 아이디 입력" required>
 						</div>
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="password">
-							<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i></label> 
+								<i class="fa-solid fa-lock" style="font-size: 20pt;margin-right: 5px;color:red;"></i>
+							</label> 
 							<input type="password" class="form-control" id="password" name="password"
 								placeholder="비밀번호 입력" required>
 						</div>
 						<!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
 						<div class="form-actions">
 							<input type="submit" class="btn btn-block btn-success btn-default" value="로그인">
 						</div>
