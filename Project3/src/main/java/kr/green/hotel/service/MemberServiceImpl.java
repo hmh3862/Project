@@ -153,9 +153,6 @@ public class MemberServiceImpl implements MemberService {
 		return password;
 	}
 	
-	
-	
-
 	@Override
 	public MemberVO passwordSearch(MemberVO memberVO) {
 		MemberVO vo = null;

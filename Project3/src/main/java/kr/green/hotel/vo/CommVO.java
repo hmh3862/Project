@@ -2,7 +2,7 @@ package kr.green.hotel.vo;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-// JSP 페이지 이동시 항상 5개 값은 가지고 넘어가야 한다....
+// JSP 페이지 이동시 항상 5개 값은 가지고 넘어가야 한다.
 // 그 값을 받아주기 위한 VO
 @XmlRootElement
 public class CommVO {
