@@ -34,7 +34,7 @@
 								<i class="fa-solid fa-square-phone" style="font-size: 20pt;margin-right: 5px;color:red;"></i>
 							</label> 
 							<input type="tel"	class="form-control" id="hp" name="hp"
-								placeholder="전화 번호 입력" required>
+								placeholder="전화번호 입력" required>
 						</div>
 						<!-- 시큐리트에서 사용자가 지정한 폼을 사용하려면 반드시 아래의 코드를 첨부해줘야 한다.-->
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
