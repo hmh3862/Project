@@ -185,7 +185,7 @@ public class MemberController {
 			// 현재 로그인된 세션 정보를 지우고
 			session.removeAttribute("mvo");
 			
-			// 시크리트의 로그인 정보도 지워줘야 한다.
+			// 시큐리티의 로그인 정보도 지워줘야 한다.
 			// 인증정보를 얻어낸다.
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			// 인증정보가 있다면
@@ -227,7 +227,7 @@ public class MemberController {
 			// 현재 로그인된 세션 정보를 지우고
 			session.removeAttribute("mvo");
 			
-			// 시크리트의 로그인 정보도 지워줘야 한다.
+			// 시큐리티의 로그인 정보도 지워줘야 한다.
 			// 인증정보를 얻어낸다.
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			// 인증정보가 있다면
@@ -245,7 +245,7 @@ public class MemberController {
 	@RequestMapping(value = "/updateForm")
 	public String updateForm() {
 		// 게시판과 다르게 글번호를 받지도 않고 수정할 글을 DB에서 가져오지도 않는다. 
-		// 왜? 이미 회원의 모든 정보는 세션에 정장되어있다. 
+		// 이미 회원의 모든 정보는 세션에 정장되어있다. 
 		return "updateForm";
 	}
 	

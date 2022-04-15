@@ -139,7 +139,6 @@
 </style>
 </head>
 <body>
-	<%-- ${cv } --%>
 	<div id="mainWrapper">
 		<div class="board-container">
 			<div class="board-card" style="margin-top: 30px; margin-bottom: 30px;">
